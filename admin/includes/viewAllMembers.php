@@ -110,8 +110,6 @@ $(".myLink").click(function(){
   $('input.fl').val(name);
   $('input.phone').val(phone);
 
-  // $(".bd-example-modal-lg").modal('show');
-  
       });
 
 
