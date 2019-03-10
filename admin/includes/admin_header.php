@@ -20,7 +20,6 @@ if (!isset($_SESSION['position'])) {
 
     <link rel="stylesheet" href="styles/css.css">
 
-    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -33,8 +32,19 @@ if (!isset($_SESSION['position'])) {
     <link rel="stylesheet" href="styles/ac.1.1.0.min.css">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.6/quill.snow.css"> 
+    <script src="scripts/jquery-3.2.1.min.js"></script>
+
+
+    <!-- sms -->
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="styles/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" type="text/css" href="styles/sms.css">
     
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+
 
     <script>
         if ( window.history.replaceState ) {
