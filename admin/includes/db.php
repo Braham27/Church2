@@ -34,7 +34,10 @@ $query_search_user = mysqli_query($conn, $search_user);
 
 //for the results
 function result($query_result){
+    
+    global $result;
     global $conn;
     $result = mysqli_query($conn, $query_result);
+    return $result;
 }
 ?>
