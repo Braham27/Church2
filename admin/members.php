@@ -77,6 +77,10 @@ switch ($link) {
     <script src="scripts/shards-dashboards.1.1.0.min.js"></script>
     <script src="scripts/script.js"></script>
 
+
+    <script src="scripts/jquery-3.2.1.min.js"></script>
+    <script src="scripts/main.js"></script>
+	
     
   </body>
 </html>
