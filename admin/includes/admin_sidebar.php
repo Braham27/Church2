@@ -33,7 +33,7 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link <?php if (isset($_GET['members'])) {echo 'active';} ?>" href="members.php?members">
-                  <i class="material-icons">vertical_split</i>
+                  <i class="fas fa-users"></i>
                   <span>Members</span>
                 </a>
               </li>
