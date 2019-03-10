@@ -36,5 +36,8 @@
     <script src="scripts/app/app-blog-new-post.1.1.0.js"></script>
     <script src="scripts/script.js"></script>
 
+    <script src="scripts/jquery-3.2.1.min.js"></script>
+	<script src="scripts/js/main.js"></script>
+
   </body>
 </html>
