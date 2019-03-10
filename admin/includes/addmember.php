@@ -28,11 +28,29 @@ if(isset($_POST['addmember'])){
     $file_size = $_FILES['name']['size'];
 
     $fileExtension = strtolower(end(explode('.',$picture_name)));
-
+    move_uploaded_file($picture_temp,"img/".$picture_name);
         $errors = []; // Store all foreseen and unforseen errors here
+
+        if(empty($picture_name)){
+
+            $picture_name = "Businessman.png";
+  
+            $addmembers = "INSERT INTO users (username, user_firstname, user_lastname, user_password, user_email, user_image, user_ministry, position, user_address, user_city, user_state, user_zip, user_description, user_tel)";
+            $addmembers .= "VALUES ('{$username}', '{$firstname}', '{$lastname}', '{$password}', '{$email}', '{$picture_name}', '{$ministry}', '{$position}', '{$address}', '{$city}', '{$state}', '{$zip}', '{$phone}', '{$description}')";
+    
+            result($addmembers);
+            checkQuery($result);
+    
+            echo "<div class='alert bg-success alert-accent alert-dismissible fade show mb-0' role='alert'>
+                  <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                    <span aria-hidden='true'></span>×</span>
+                  </button>
+                  <i class='fa fa-info mx-2'></i>
+                  <strong>Member Added.</strong> <a href='members.php?members' style='color:gray';box-shadow: inset 0 1px 3px rgba(0,0,0,.1), 0 5px 1px rgba(0,0,0,.1);>View All the members</a> </div>";        
+          } 
         
-        if(!in_array($fileExtension,$fileExtensions)){
-        echo  $errors[]="<div class='alert bg-danger alert-accent alert-dismissible fade show mb-0' role='alert'>
+            elseif(!in_array($fileExtension,$fileExtensions)){
+            echo  $errors[]="<div class='alert bg-danger alert-accent alert-dismissible fade show mb-0' role='alert'>
                         <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
                           <span aria-hidden='true'></span>×</span>
                         </button>
@@ -40,7 +58,7 @@ if(isset($_POST['addmember'])){
                         The file you Choose for the Picture is not allowed. Please upload a JPEG or PNG file</div>";
       } 
 
-      if ($file_size > 2000000) {
+      elseif ($file_size > 2000000) {
       echo $errors[] = "<div class='alert bg-danger alert-accent alert-dismissible fade show mb-0' role='alert'>
         <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
           <span aria-hidden='true'></span>×</span>
@@ -48,18 +66,20 @@ if(isset($_POST['addmember'])){
         <i class='fa fa-info mx-2'></i>This file is more than 2MB. Sorry, it has to be less than or equal to 2MB</div>";
     }
 
-      if(empty($errors)) {
+      elseif(empty($errors)) {
          move_uploaded_file($picture_temp,"img/".$picture_name);
 
       // \\\\\\\End with the pic
 
         selectUsers();
         checkQuery($query_search_user);
-        $addmembers = "INSERT INTO users (username, user_firstname, user_lastname, user_password, user_email, user_image, user_ministry, position, user_address, user_city, user_state, user_zip, user_description, user_tel) ";
+        $addmembers = "INSERT INTO users (username, user_firstname, user_lastname, user_password, user_email, user_image, user_ministry, position, user_address, user_city, user_state, user_zip, user_description, user_tel)";
         $addmembers .= "VALUES ('{$username}', '{$firstname}', '{$lastname}', '{$password}', '{$email}', '{$picture_name}', '{$ministry}', '{$position}', '{$address}', '{$city}', '{$state}', '{$zip}', '{$description}', {$phone})";
 
-        $query_addmembers = result($addmembers);
-        checkQuery($query_addmembers);
+        $result=mysqli_query($conn, $addmembers);
+       
+        // result($addmembers);
+        checkQuery($result);
 
         echo "<div class='alert bg-success alert-accent alert-dismissible fade show mb-0' role='alert'>
               <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
@@ -67,7 +87,9 @@ if(isset($_POST['addmember'])){
               </button>
               <i class='fa fa-info mx-2'></i>
               <strong>Member Added.</strong> <a href='members.php?members' style='color:gray';box-shadow: inset 0 1px 3px rgba(0,0,0,.1), 0 5px 1px rgba(0,0,0,.1);>View All the members</a> </div>";        
-      } 
+      } else {
+        echo "";
+      }
       
       }
     
