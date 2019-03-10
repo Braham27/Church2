@@ -66,6 +66,9 @@ if(isset($_POST['addmember'])){
 
          while ($row = mysqli_fetch_array($result)){
           $picture_name = $row['user_image'];}
+          if(empty($picture_name)){
+            $picture_name = "Businessman.png";
+          }
 
         $editmembers = "UPDATE users SET username = '{$username}', user_firstname = '{$firstname}', "; 
         $editmembers .= "user_lastname = '{$lastname}', user_password = '{$password}', ";
