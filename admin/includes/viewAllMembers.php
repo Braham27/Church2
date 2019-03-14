@@ -1,3 +1,22 @@
+<?php
+    if (isset($_GET['pageno'])) {
+      $pageno = $_GET['pageno'];
+  } else {
+      $pageno = 1;
+  }
+
+  $no_of_records_per_page = $_POST['perpage'];
+  
+  $offset = ($pageno-1) * $no_of_records_per_page; 
+
+      $search_user = "SELECT * FROM users";
+      $query_search_user = mysqli_query($conn, $search_user);
+      $count = mysqli_num_rows($query_search_user);
+
+      $total_pages = ceil($count/ $no_of_records_per_page);
+
+?>
+
 <div class="main-content-container container-fluid px-4">
     <!-- Page Header -->
     <div class="page-header row no-gutters py-4">
@@ -15,27 +34,28 @@
             <h6 class="m-0"><a href="members.php?link=addmember">Add Member<i class="fas fa-user-plus ml-2"></i></a></h6>
 
           </div>
+          <form method="post" action="">                  
           <div class="card-body p-0 pb-3 text-center">
+
           <table class="table table-striped relative" id="myTable">
+
           <caption class="ml-4 mt-4">List of Members</caption>
+          <form method="post" action="">
             <thead>
                 <tr>
                     
                   <h6 class="text-left mx-4 mt-3" style="float:left;position:relative;top:4px">Select Number of Rows:</h6>
-                  
                   <div class="form-group mt-3 mb-0" id="month">
-
                   <div class="form-group col-lg-3" style="display:inline-block;width:300px;"> 
-                    <select class="form-control" id="maxRows" >
-                      <option selected>Show All</option>
-                      <option>10</option>
-                      <option>25</option>
-                      <option>50</option>
-                      <option>100</option>
+                    <select class="form-control" name="perpage" id="" >
+                      <a href="kjnkjnk"><option value="">Show All</option></a>
+                      <a href=""><option value="10">10</option></a>
+                      <a href=""><option value="25">25</option></a>
+                      <a href=""><option value="50">50</option></a>
+                      <a href=""><option value="100">100</option></a>
                     </select>
                     </div>
-                    
-                   
+
                     <div class="search-box">
                         <input type="text" class="search-txt" id="myInput" onkeyup="myFunction()" placeholder="Type to search">
                         <button class="search-btn" type="submit">
@@ -43,25 +63,25 @@
                         </button>
                     </div>
                     </div>
-                    
-               
-
-                  <th scope="col">#</th>
-                  <th scope="col">Last</th>
-                  <th scope="col">First</th>
-                  <th scope="col">Email</th>
-                  <th scope="col">position & Ministry</th>
-                  <th scope="col">action</th>
-                </tr>
-            </thead>
+</form>                     
+                    <th scope="col">#</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">position & Ministry</th>
+                    <th scope="col">action</th>
+                  </tr>
+                </thead>
+</form>                    
             <tbody>
-              <?php
-                 selectUsers();
-                  checkQuery($query_search_user);
-                  $count = mysqli_num_rows($query_search_user);
+
+              <?php                
 
                   for($x = 1; $x <= $count; $x++){
-                
+                    
+                  $membersPerPageSql = "SELECT * FROM users LIMIT $offset, $no_of_records_per_page"; 
+                  $result = mysqli_query($conn,$membersPerPageSql);
+
                   while($row = mysqli_fetch_array($query_search_user)){
                   $user_id = $row['user_id'];
                   $user_email = $row['user_email'];
@@ -116,8 +136,8 @@ $(".myLink").click(function(){
   
   $('input.fl').val(name);
   $('input.phone').val(phone);
-
       });
+
 </script>           
 
 
@@ -126,6 +146,7 @@ $(".myLink").click(function(){
 <!-- /END OF SMS -->
                                   
                             </div>
+                          
                           </div>
                         </div>
 
@@ -155,16 +176,8 @@ $(".myLink").click(function(){
                       }
                   ?>
 
-                   
-                                       
             </tbody>
             </table>
-
-
-<script>
-
-</script>
-                                        
 
             <div class="pagination mr-4" id="selectmenu">
                 <a href="#">&laquo;</a>
