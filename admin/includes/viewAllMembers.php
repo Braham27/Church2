@@ -1,20 +1,7 @@
 <?php
-    if (isset($_GET['pageno'])) {
-      $pageno = $_GET['pageno'];
-  } else {
-      $pageno = 1;
-  }
+   
 
-  $no_of_records_per_page = $_POST['perpage'];
   
-  $offset = ($pageno-1) * $no_of_records_per_page; 
-
-      $search_user = "SELECT * FROM users";
-      $query_search_user = mysqli_query($conn, $search_user);
-      $count = mysqli_num_rows($query_search_user);
-
-      $total_pages = ceil($count/ $no_of_records_per_page);
-
 ?>
 
 <div class="main-content-container container-fluid px-4">
@@ -34,27 +21,31 @@
             <h6 class="m-0"><a href="members.php?link=addmember">Add Member<i class="fas fa-user-plus ml-2"></i></a></h6>
 
           </div>
-          <form method="post" action="">                  
+
           <div class="card-body p-0 pb-3 text-center">
 
           <table class="table table-striped relative" id="myTable">
 
           <caption class="ml-4 mt-4">List of Members</caption>
-          <form method="post" action="">
             <thead>
                 <tr>
                     
                   <h6 class="text-left mx-4 mt-3" style="float:left;position:relative;top:4px">Select Number of Rows:</h6>
                   <div class="form-group mt-3 mb-0" id="month">
-                  <div class="form-group col-lg-3" style="display:inline-block;width:300px;"> 
+                  <div class="form-group col-lg-3 ml-5" style="display:inline-block;width:300px;">
+
+<form method="post" action="">                  
+                    
                     <select class="form-control" name="perpage" id="" >
-                      <a href="kjnkjnk"><option value="">Show All</option></a>
-                      <a href=""><option value="10">10</option></a>
-                      <a href=""><option value="25">25</option></a>
-                      <a href=""><option value="50">50</option></a>
-                      <a href=""><option value="100">100</option></a>
+                      <option value="all">Show All</option>
+                      <option value="10">10</option>
+                      <option value="25">25</option>
+                      <option value="50">50</option>
+                      <option value="100">100</option>
                     </select>
-                    </div>
+                  </div>
+                  <input class="btn btn-sm btn-primary" type="submit" name="apply" value="Apply">
+</form>
 
                     <div class="search-box">
                         <input type="text" class="search-txt" id="myInput" onkeyup="myFunction()" placeholder="Type to search">
@@ -63,7 +54,7 @@
                         </button>
                     </div>
                     </div>
-</form>                     
+                 
                     <th scope="col">#</th>
                     <th scope="col">Last</th>
                     <th scope="col">First</th>
@@ -72,17 +63,37 @@
                     <th scope="col">action</th>
                   </tr>
                 </thead>
-</form>                    
+                  
             <tbody>
 
-              <?php                
+              <?php      
+                  
+                  $per_page = 100000;
 
-                  for($x = 1; $x <= $count; $x++){
-                    
-                  $membersPerPageSql = "SELECT * FROM users LIMIT $offset, $no_of_records_per_page"; 
-                  $result = mysqli_query($conn,$membersPerPageSql);
+                  if(isset($_GET['page'])){
+                      $page = $_GET['page'];
+                  } else {
+                      $page ='';
+                  }
 
-                  while($row = mysqli_fetch_array($query_search_user)){
+                  if ($page == "" || $page == 1) { // $page == "" means the index;
+                      $page_1 = 1;
+                  } else {
+                      $page_1 = ($page * $per_page) - $per_page; //$per_page is the # of data that you need by page; the total should be equal to 0;
+                      //or $page_1 = ($page-1) * $per_page
+                  }   
+
+                 $search_user = "SELECT * FROM users";
+                 $query_search_user = mysqli_query($conn, $search_user);
+                 $count = mysqli_num_rows($query_search_user);
+                 $no_of_page = ceil($count/$per_page); 
+                 
+                 $search_user = "SELECT * FROM users LIMIT $page_1, $per_page";
+                 $query_search_user = mysqli_query($conn, $search_user);
+                 
+                 for($x = 1; $x <= $no_of_page; $x++){
+                   
+                  while($row = mysqli_fetch_assoc($query_search_user)){
                   $user_id = $row['user_id'];
                   $user_email = $row['user_email'];
                   $position = $row['position'];
@@ -110,16 +121,6 @@
                         data-content="Send A Mail" data-placement="top" >
                         <i class="fas fa-envelope"></i></a>  
 
-<!-- data-toggle="modal" data-target=".bd-example-modal-lg"  -->
-<!-- rel="<?php  $user_id?>" -->
-                        <input type="hidden" class="" value="">
-                        <input type="hidden" class="" value="">
-                        <input type="hidden" class="" value="">
-                        <input type="hidden" class="" value="">
-                        <input type="hidden" class="" value="">
-                        <input type="hidden" class="" value="">
-                        <input type="hidden" class="" value="">
-                        
                         <a class="pl-1 myLink pr-2 py-0"  id="popover" data-trigger="hover" rel="<?php echo $user_tel?>" 
                         data-content="<?php echo $user_first ?>" value="<?php echo $user_last . " " . $user_first ?>" data-toggle="modal" data-target=".bd-example-modal-lg"
                         title="Send A sms to <?php echo $user_first ?>" href='javascript:void(0)' data-toggle="popover" data-placement="top">
@@ -180,15 +181,30 @@ $(".myLink").click(function(){
             </table>
 
             <div class="pagination mr-4" id="selectmenu">
-                <a href="#">&laquo;</a>
+            <?php
+
+    for($i=1; $i<=$no_of_page; $i++){
+
+        if ($page == $i) { // $i = number of page
+            echo "<a class='active_link' href='members.php?members&page={$i}'>{$i}</a>";
+        } else {
+            echo "<a href='members.php?members&page={$i}'>{$i}</a>";
+        }
+        
+    }
+  
+   ?>
+     <!-- <a href="#?pageno=1">&laquo;</a>
                 <a href="#">1</a>
                 <a href="#" class="active">2</a>
                 <a href="#">3</a>
                 <a href="#">4</a>
                 <a href="#">5</a>
                 <a href="#">6</a>
-                <a href="#">&raquo;</a>
+                <a href="#">&raquo;</a> -->
             </div>
+
+          
 
         </div>
         </div>
