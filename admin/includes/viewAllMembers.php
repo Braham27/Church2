@@ -60,7 +60,7 @@
                     <th scope="col">First</th>
                     <!-- <th  class="desktop" scope="col">Email</th> -->
                     <th class="desktop" scope="col">position & Ministry</th>
-                    <th class="desktop" scope="col">action</th>
+                    <th scope="col">action</th>
                   </tr>
                 </thead>
                   
@@ -107,9 +107,9 @@
                       <th scope="row"><?php echo $x++ ?></th>
                       <td><?php echo $user_last ?></td>
                       <td><?php echo $user_first ?></td>
-                      <!-- <td class="desktop pl-5 pr-0 text-left"><?php echo $user_email ?></td> -->
+                      <td class="desktop pl-5 pr-0 text-left"><?php echo $user_email ?></td>
                       <td class="desktop" ><?php if(!empty($position)){echo ucwords($position) ." ". "Of The"." ";} echo ucwords($ministry); if(!empty($position)){echo " "."Ministry";}  ?></td>
-                      <td  class="desktop" colspan="2" class="px-0">
+                      <td colspan="2" class="px-0">
                       
                       <a class="mr-3" href="" id="popover" data-toggle="popover" 
                         title="See More of <?php echo $user_first ?>" data-trigger="hover" 
