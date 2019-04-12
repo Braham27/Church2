@@ -24,7 +24,7 @@
 
           <div class="card-body p-0 pb-3 text-center">
 
-          <table class="table table-striped relative" id="myTable">
+          <table style="overflow-x:auto;" class="table table-striped relative" id="myTable">
 
           <caption class="ml-4 mt-4">List of Members</caption>
             <thead>
@@ -58,9 +58,9 @@
                     <th scope="col">#</th>
                     <th scope="col">Last</th>
                     <th scope="col">First</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">position & Ministry</th>
-                    <th scope="col">action</th>
+                    <!-- <th  class="desktop" scope="col">Email</th> -->
+                    <th  class="desktop" scope="col">position & Ministry</th>
+                    <th  class="desktop" scope="col">action</th>
                   </tr>
                 </thead>
                   
@@ -107,9 +107,9 @@
                       <th scope="row"><?php echo $x++ ?></th>
                       <td><?php echo $user_last ?></td>
                       <td><?php echo $user_first ?></td>
-                      <td class="pl-5 pr-0 text-left"><?php echo $user_email ?></td>
-                      <td><?php if(!empty($position)){echo ucwords($position) ." ". "Of The"." ";} echo ucwords($ministry); if(!empty($position)){echo " "."Ministry";}  ?></td>
-                      <td colspan="2" class="px-0">
+                      <!-- <td class="desktop pl-5 pr-0 text-left"><?php echo $user_email ?></td> -->
+                      <td class="desktop" ><?php if(!empty($position)){echo ucwords($position) ." ". "Of The"." ";} echo ucwords($ministry); if(!empty($position)){echo " "."Ministry";}  ?></td>
+                      <td  class="desktop" colspan="2" class="px-0">
                       
                       <a class="mr-3" href="" id="popover" data-toggle="popover" 
                         title="See More of <?php echo $user_first ?>" data-trigger="hover" 
