@@ -18,7 +18,7 @@ if (!isset($_SESSION['position'])) {
     <meta name="description" content="A high-quality &amp; free Bootstrap admin dashboard template pack that comes with lots of templates and components.">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="styles/css.css">
+    <link rel="stylesheet" type="text/css" href="styles/css.css">
 
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
