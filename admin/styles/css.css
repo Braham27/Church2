@@ -202,3 +202,7 @@
 .folder-tree li.expanded > .arrow { 
   transform: rotate(0deg); 
 }
+
+.desktop{
+  display: none;
+}
