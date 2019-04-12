@@ -59,8 +59,8 @@
                     <th scope="col">Last</th>
                     <th scope="col">First</th>
                     <!-- <th  class="desktop" scope="col">Email</th> -->
-                    <th  class="desktop" scope="col">position & Ministry</th>
-                    <th  class="desktop" scope="col">action</th>
+                    <th class="desktop" scope="col">position & Ministry</th>
+                    <th class="desktop" scope="col">action</th>
                   </tr>
                 </thead>
                   
