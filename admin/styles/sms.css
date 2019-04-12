@@ -1,5 +1,5 @@
 
-/*---------------------------------------------*/
+/* ---------------------------------------------
 input {
 	outline: none;
 	border: none;
@@ -56,20 +56,20 @@ textarea::-moz-placeholder {
 textarea:-ms-input-placeholder { 
   font-family: Poppins-Medium;  
   color: #555555;
-}
+} */
 
 
 /*---------------------------------------------*/
-.container {
+/* .container {
 	max-width: 1200px;
-}
+} */
 
 
 
 
 /*//////////////////////////////////////////////////////////////////
 [ Contact ]*/
-
+/* 
 .container-contact100 {
   width: 100%;  
   min-height: 80vh;
@@ -87,13 +87,13 @@ textarea:-ms-input-placeholder {
   z-index: 1;
   padding-top: 10%;
 }
-
+ */
 
 
 
 /*==================================================================
 [ Form ]*/
-
+/* 
 .contact100-form {
   width: 100%;
   display: -webkit-box;
@@ -115,13 +115,13 @@ textarea:-ms-input-placeholder {
   line-height: 1.2;
   text-align: left;
   padding-bottom: 44px;
-}
+} */
 
 
 
 /*------------------------------------------------------------------
 [ Input ]*/
-
+/* 
 .wrap-input100 {
   width: 100%;
   position: relative;
@@ -178,10 +178,10 @@ textarea:-ms-input-placeholder {
   transition: all 0.4s;
 
   background: #ff4b5a;
-}
+} */
 
 
-/*---------------------------------------------*/
+/* ---------------------------------------------
 input.input100 {
   height: 40px;
 }
@@ -205,7 +205,7 @@ textarea.input100 {
 
 /*------------------------------------------------------------------
 [ Button ]*/
-.container-contact100-form-btn {
+/* .container-contact100-form-btn {
   width: 90%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -269,7 +269,7 @@ textarea.input100 {
   -ms-transform: translateX(10px);
   -o-transform: translateX(10px);
   transform: translateX(10px);
-}
+} */ */
 
 
 /*------------------------------------------------------------------
