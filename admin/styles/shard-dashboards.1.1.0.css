@@ -4342,7 +4342,7 @@ a.text-accent:hover, a.text-accent:focus {
     color: #818EA3; }
   @media (max-width: 767.98px) {
     .main-footer {
-      display: block !important;
+      /* display: block !important; */
       height: auto; }
       .main-footer .nav {
         width: 100%;
