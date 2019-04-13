@@ -1,64 +1,67 @@
-<?php
-   
-
-  
-?>
 
 <div class="main-content-container container-fluid px-4">
+  
     <!-- Page Header -->
+   
     <div class="page-header row no-gutters py-4">
       <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
         <span class="text-uppercase page-subtitle">Overview</span>
         <h3 class="page-title">Members</h3>
       </div>
     </div>
+
     <!-- End Page Header -->
     <!-- Default Light Table -->
-    <div class="row">
+    <div class="row row1">
       <div class="col">
         <div class="card card-small mb-4">
-          <div class="card-header border-bottom">
-            <h6 class="m-0"><a href="members.php?link=addmember">Add Member<i class="fas fa-user-plus ml-2"></i></a></h6>
-
+          <div class="card-header ">
+            <h6 class="desktop-t m-0"><a href="members.php?link=addmember">Add Member<i class="fas fa-user-plus ml-2"></i></a></h6>
           </div>
 
           <div class="card-body p-0 pb-3 text-center">
 
-          <table style="overflow-x:auto;" class="table table-striped relative" id="myTable">
+          <table class="table table-striped relative" id="myTable">
 
-          <caption class="ml-4 mt-4">List of Members</caption>
-            <thead>
+          <caption class="desktop-t ml-4 mt-4">List of Members</caption>
+                   
+          <h6 class="mx-4 mobile mt-3" style="float:left;position:relative;top:4px">Select Number of Rows:</h6>
+
+<div class="form-group mt-3 mb-0" id="month">
+ 
+  <div class="mobile">
+    <form method="post" action="">                  
+        <div class="inline form-group col-lg-3 ml-5">
+          <select class="form-control" name="perpage" id="" >
+            <option value="all">Show All</option>
+            <option value="10">10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+          </select>
+        </div>
+        <input class="btn btn-sm btn-primary" type="submit" name="apply" value="Apply">
+    </form>
+  </div>
+
+    <div class="mobile-c">
+      <div class="search-box">
+          <input type="text" class="search-txt" id="myInput" onkeyup="myFunction()" placeholder="Search Member">
+          <button class="search-btn" type="submit">
+              <i class="fas fa-search"></i>
+          </button>
+      </div>
+    </div>
+
+</div>
+
+                    <thead>
                 <tr>
-                    
-                  <h6 class="text-left mx-4 mt-3" style="float:left;position:relative;top:4px">Select Number of Rows:</h6>
-                  <div class="form-group mt-3 mb-0" id="month">
-                  <div class="form-group col-lg-3 ml-5" style="display:inline-block;width:300px;">
-
-<form method="post" action="">                  
-                    
-                    <select class="form-control" name="perpage" id="" >
-                      <option value="all">Show All</option>
-                      <option value="10">10</option>
-                      <option value="25">25</option>
-                      <option value="50">50</option>
-                      <option value="100">100</option>
-                    </select>
-                  </div>
-                  <input class="btn btn-sm btn-primary" type="submit" name="apply" value="Apply">
-</form>
-
-                    <div class="search-box">
-                        <input type="text" class="search-txt" id="myInput" onkeyup="myFunction()" placeholder="Type to search">
-                        <button class="search-btn" type="submit">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </div>
-                    </div>
                  
                     <th scope="col">#</th>
                     <th scope="col">Last</th>
                     <th scope="col">First</th>
-                    <!-- <th  class="desktop" scope="col">Email</th> -->
+                    <th  class="desktop" scope="col">Email</th>
                     <th class="desktop" scope="col">position & Ministry</th>
                     <th scope="col">action</th>
                   </tr>
@@ -107,7 +110,7 @@
                       <th scope="row"><?php echo $x++ ?></th>
                       <td><?php echo $user_last ?></td>
                       <td><?php echo $user_first ?></td>
-                      <td class="desktop pl-5 pr-0 text-left"><?php echo $user_email ?></td>
+                      <td class="desktop pl-5 pr-0"><?php echo $user_email ?></td>
                       <td class="desktop" ><?php if(!empty($position)){echo ucwords($position) ." ". "Of The"." ";} echo ucwords($ministry); if(!empty($position)){echo " "."Ministry";}  ?></td>
                       <td colspan="2" class="px-0">
                       
@@ -145,12 +148,7 @@ $(".myLink").click(function(){
 <!-- /BEGINING OF SMS -->
       <?php include "sms.php"; ?>
 <!-- /END OF SMS -->
-                                  
-                            </div>
-                          
-                          </div>
-                        </div>
-
+                                                         
                         <a class="mr-2 pb-1" href="members.php?link=editmember&m_id=<?php echo $user_id; ?>" id="popover" data-toggle="popover" 
                         title="Edit" data-trigger="hover" 
                         data-content="" data-placement="top">
