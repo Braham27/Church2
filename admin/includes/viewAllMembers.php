@@ -15,7 +15,7 @@
     <div class="row row1">
       <div class="col">
         <div class="card card-small mb-4">
-          <div class="card-header ">
+          <div class="card-header">
             <h6 class="desktop-t m-0"><a href="members.php?link=addmember">Add Member<i class="fas fa-user-plus ml-2"></i></a></h6>
           </div>
 
@@ -25,7 +25,7 @@
 
           <caption class="desktop-t ml-4 mt-4">List of Members</caption>
                    
-          <h6 class="mx-4 mobile mt-3" style="float:left;position:relative;top:4px">Select Number of Rows:</h6>
+          <h6 class="mx-4 mobile text mt-3">Select Number of Rows:</h6>
 
 <div class="form-group mt-3 mb-0" id="month">
  
@@ -43,8 +43,9 @@
         <input class="btn btn-sm btn-primary" type="submit" name="apply" value="Apply">
     </form>
   </div>
+</div>
 
-    <div class="mobile-c">
+    <div class="search">
       <div class="search-box">
           <input type="text" class="search-txt" id="myInput" onkeyup="myFunction()" placeholder="Search Member">
           <button class="search-btn" type="submit">
@@ -53,7 +54,6 @@
       </div>
     </div>
 
-</div>
 
                     <thead>
                 <tr>
