@@ -198,9 +198,63 @@
 .folder-tree li.expanded > .arrow { 
   transform: rotate(0deg); 
 }
-
-@media (min-width: 770px){
+.inline{
+  display: inline-block;
+  width:300px;
+}
+@media (max-width: 770px){
   .desktop{
     display: none;
+  }
+  body{
+    overflow-x: hidden;
+  }
+  .mobile-c{
+    position: relative;
+    /* width: 50%; */
+    margin: 0 auto 4em;
+    bottom: 11.5em;
+    float: right;
+  }
+  .inline{
+    display: inline-block;
+    /* width:300px; */
+  }
+  
+}
+
+@media (max-width: 420px){
+  .mobile{
+    display: none;
+  }
+  .search-txt{
+    width: 240px;
+  }
+.mobile-c{
+    transform: translate(-1%, -25%);
+    position: relative;
+    bottom: 7em;
+    margin-bottom: 10em;
+    margin-top: .8em;
+  }
+
+  #selectmenu{
+    position: relative;
+    margin: 0 auto;
+    width: 50%;
+    
+  }
+  .center{
+    transform: translateX(23%);    
+  }
+
+  .desktop-t{
+    text-align: center;
+  }
+  .row1{
+    /* position: relative;
+    left: -1.1em;*/
+    width: 110%; 
+    /* transform: translateX(-2px); */
   }
 }
