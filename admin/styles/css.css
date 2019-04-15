@@ -291,19 +291,28 @@
 @media (max-width: 736px){
   .search{
     margin-left: -1.1em;
+    position: absolute;
+    float: inline-start;
 }
 .search-txt{
   width: 200px;
+  padding-left: 1em;
 }
 .search-box:focus-within  > .search-txt{
   width: 200px !important;
 }
+
+.main-navbar .navbar .nav .nav-link{
+display: unset !important;
 }
+}
+
 @media (max-width: 1025px){
   #myTable th:nth-child(1){
     display: none;
   }
 }
+
 @media (max-width: 420px){
   .mobile{
     display: none;
@@ -339,22 +348,3 @@
   }
 }
 
-
-@media (max-width: 736px){
-  .search{
-    /* margin-left: 14em; */
-    position: absolute;
-  float: inline-start;
-}
-.search-txt{
-  width: 200px;
-  padding-left: 1em;
-
-}
-.search-box:focus-within  > .search-txt{
-  width: 200px !important;
-}
-.main-navbar .navbar .nav .nav-link{
-  display: unset !important;
-}
-}
