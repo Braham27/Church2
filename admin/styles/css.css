@@ -279,9 +279,17 @@
   .mobile{
     display: none;
   }
- 
+  .center{
+    margin: 0 auto !important;
+    max-width: 75%;
+  }
+
+  .search-box:focus-within > .search-txt{
+  max-width: 150px;
+  }
+
   .search-txt{
-    width: 240px;
+    max-width: 150px;
     padding-left:1em; 
   }
 
@@ -331,6 +339,9 @@
   .desktop-t{
     text-align: center;
   }
+  #month{
+    transform: none !important;
+  }
 .mobile{
   margin-bottom: 1em !important;
 }
@@ -340,14 +351,17 @@
   #month{
     clear: both;
     transform: translateX(40%);    
+    
   }
   .search{
     position: relative;
     top: .5em;
     margin-bottom: 4.5em;
-    display: flex;
-     align-items: center;
-     justify-content: center;
+    text-align: center
+    
+  }
+  .search-box{
+    display: inline-block;
   }
 
 }
