@@ -26,7 +26,6 @@
           <caption class="desktop-t ml-4 mt-4">List of Members</caption>
                    
           <h6 class="mx-4 mobile text mt-3">Select Number of Rows:</h6>
-<div class="center">
 <div class="form-group mt-3 mb-0" id="month">
  
   <div class="mobile">
@@ -45,6 +44,7 @@
   </div>
 </div>
 
+<div class="center">
     <div class="search">
       <div class="search-box">
           <input type="text" class="search-txt" id="myInput" onkeyup="myFunction()" placeholder="Search Member">
