@@ -321,18 +321,13 @@
 
 @media(max-width: 575px){
   .search{
-    position: absolute;
-    right: 1.8em;
     top: 3.5em;
   }
-  .search-box:focus-within > .search-txt{
-    width: 150px;
-    }
 }
 
 @media (max-width:525px){
   .form-group .mobile .btn{
-    margin-left: -5em;
+    margin-right: -5em;
   } 
   .desktop-t{
     text-align: center;
