@@ -325,21 +325,18 @@
 }
 
 @media (max-width:525px){
-  .form-group .mobile .btn{
-    top: .2em;
-    right: 10em;
-  } 
+  .form-group .mobile{
+    position: relative;
+    left: 6em;
+    right: 6em;
+    margin: 1.4em auto;
+  }
   .desktop-t{
     text-align: center;
   }
   #month{
     transform: none !important;
   }
-.mobile{
-  margin-bottom: 1em !important;
-  top: .2em;
-  right: -100em;
-}
   .text{
     float: unset;
   }
@@ -348,11 +345,13 @@
     position: relative;
     top: .5em;
     margin-bottom: 4.5em;
-    text-align: center
     
   }
   .search-box{
     display: inline-block;
   }
+  .search-box:focus-within > .search-txt{
+    width: 150px;
+    }
 
 }
