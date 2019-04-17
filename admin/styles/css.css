@@ -348,11 +348,7 @@
   .text{
     float: unset;
   }
-  #month{
-    clear: both;
-    transform: translateX(40%);    
-    
-  }
+
   .search{
     position: relative;
     top: .5em;
