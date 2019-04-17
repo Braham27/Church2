@@ -326,7 +326,8 @@
 
 @media (max-width:525px){
   .form-group .mobile .btn{
-    margin-right: -5em;
+    top: .2em;
+    right: 10em;
   } 
   .desktop-t{
     text-align: center;
@@ -336,6 +337,8 @@
   }
 .mobile{
   margin-bottom: 1em !important;
+  top: .2em;
+  right: -100em;
 }
   .text{
     float: unset;
