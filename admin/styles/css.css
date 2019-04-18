@@ -303,15 +303,15 @@
 @media (max-width:525px){
   .form-group .mobile{
     position: relative;
-    margin: 1em 5em 10em;
-    width: 100%;
+    top: 6em;
+    margin: -5em 1em 15em;
+    transform: translateX(43%);
   }
   .desktop-t{
     text-align: center;
   }
   #month{
-    transform: none !important;
-    clear: both;
+    width: 50%;
   }
   .text{
     float: unset;
@@ -322,16 +322,18 @@
   .center{
     position: relative;
     top: 6em;
-    margin: 2em 1em;
-    transform: translateX(-14%);
+    margin: 1em 1em 15em;
+    transform: translateX(-16%);
   }
 
   .search-txt{
     padding-left: 1em;
-    width: 70%;
+    width: 80%;
   }
   .search-box:focus-within{
-    padding-left:1em; 
+    padding-left: unset !important; 
+    width: 80%;
+    padding-right:unset; 
     }
 
 }
