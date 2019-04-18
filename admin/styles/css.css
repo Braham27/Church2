@@ -303,7 +303,7 @@
 @media (max-width:525px){
   .form-group .mobile{
     position: relative;
-    margin: 1.4em auto 4.2em !important;
+    margin: 1em 5em 10em;
     width: 100%;
   }
   .desktop-t{
@@ -322,7 +322,7 @@
   .center{
     position: relative;
     top: 6em;
-    margin: 1em 1em 15em;
+    margin: 2em 1em;
     transform: translateX(-14%);
   }
 
