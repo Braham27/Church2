@@ -329,7 +329,7 @@
     position: relative;
     left: 6em;
     right: 6em;
-    margin: 1.4em auto;
+    margin: 1.4em auto 4.2em !important;
   }
   .desktop-t{
     text-align: center;
@@ -340,18 +340,28 @@
   .text{
     float: unset;
   }
-
   .search{
     position: relative;
     top: .5em;
+    /* 
     margin-bottom: 4.5em;
-    
+    left: 0;
+    right: 0;
+    margin-left: 1em !important;
+    margin-right: 1em; */
+  align-self: center;
+  justify-self: center;
   }
-  .search-box{
-    display: inline-block;
+  .center{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 200px;
+
   }
-  .search-box:focus-within > .search-txt{
-    width: 150px;
+
+  .search-box:focus-within, .search-txt{
+    min-width: 280px;
+    padding-left:1em; 
     }
 
 }
