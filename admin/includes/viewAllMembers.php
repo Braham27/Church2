@@ -167,9 +167,10 @@ if(isset($_POST['apply'])){
                       title='Delete $user_first' data-trigger='hover' 
                       data-content='Delete $user_first' data-placement='top' onclick='return confirm('Are you sure you want to Delete $user_last . ' ' . $user_first;?');'>
                       <i class='fas fa-trash-alt'></i></a>";                 
+                 
+                 echo "</td>"
 ?>
 
-</td>       
 </tr>
 <script type="text/javascript">
 
