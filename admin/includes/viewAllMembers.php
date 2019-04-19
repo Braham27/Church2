@@ -93,9 +93,24 @@ if(isset($_POST['apply'])){
                 </thead>
                   
             <tbody>
+              <script>
+              $(document).ready(function(){
+                $("#data").on('change', function(){
+                  var value = $(this).val();
+                  $.ajax({
+                    url:'fetch_database',
+                    type:'POST',
+                    data: 'request='+value,
+                    success:function(data){
+                      $
+                    }
+                  })
+                })
+              })
+              </script>
 
+<div id="data">
               <?php                    
-
                   if(isset($_GET['page'])){
                       $page = $_GET['page'];
                   } else {
@@ -130,15 +145,23 @@ if(isset($_POST['apply'])){
                   $user_last = $row['user_lastname'];
                   $user_first = $row['user_firstname'];
                   $user_tel = $row['user_tel'];
-              ?>
-<tr id="data">
-<?php
-                    
+                
+                 echo "<tr>";    
                  echo "<th scope='row'>" . $x++ . "</th>";
                  echo "<td>$user_last</td>";
                  echo "<td>$user_first</td>";
                  echo "<td class='desktop pl-5 pr-0'>$user_email</td>";
-                 echo "<td class='desktop' ><?php if(!empty($position)){echo ucwords($position) .' '. 'Of The'.' ';} echo ucwords($ministry); if(!empty($position)){echo ' '.'Ministry';} </td>";
+                 echo "<td class='desktop'>"; 
+                 
+                 if(!empty($position)){
+                   echo ucwords($position) .' '. 'Of The'.' ';
+                  } 
+                  echo ucwords($ministry); 
+                  if(!empty($position)){
+                    echo ' '.'Ministry';
+                  } 
+                  echo "</td>";
+
                  echo "<td colspan='2' class='px-0'>";
                     
                  echo "<a class='mr-3' href=' id='popover' data-toggle='popover' 
@@ -167,10 +190,12 @@ if(isset($_POST['apply'])){
                       data-content='Delete $user_first' data-placement='top' onclick='return confirm('Are you sure you want to Delete $user_last . ' ' . $user_first;?');'>
                       <i class='fas fa-trash-alt'></i></a>";                 
                  
-                 echo "</td>"
+                      echo "</td>";
+                      echo "</tr>";
+                  }}
 ?>
+</div>
 
-</tr>
 <script type="text/javascript">
 
 $(".myLink").click(function(){
@@ -191,8 +216,7 @@ $(".myLink").click(function(){
                                                          
 
                   <?php
-                        }
-                      }
+                   
                       
                       // delete Members
                       if(isset($_GET['delete'])){
