@@ -1,3 +1,27 @@
+<?php
+if(isset($_POST['apply'])){
+ $bulk_options = $_POST['perpage'];
+ switch ($bulk_options) {
+    case '25':
+    $per_page = 25;
+    break;
+
+    case '50';
+    $per_page = 50;
+    break;
+
+    case '100';
+    $per_page = 100;
+    break;
+
+    case 'all';
+    $per_page = 100000000000;
+    
+    default:
+    $per_page = 10;
+ }
+}
+?>
 
 <div class="main-content-container container-fluid px-4">
   
@@ -32,11 +56,11 @@
     <form method="post" action="">                  
         <div class="inline form-group col-lg-3 ml-5">
           <select class="form-control" name="perpage" id="" >
-            <option value="all">Show All</option>
-            <option value="10" selected>10</option>
+            <option value="10">10</option>
             <option value="25">25</option>
             <option value="50">50</option>
             <option value="100">100</option>
+            <option value="all">Show All</option>
           </select>
         </div>
         <input class="btn btn-sm btn-primary" type="submit" name="apply" value="Apply">
@@ -70,16 +94,17 @@
                   
             <tbody>
 
-              <?php      
-                  
-                  $per_page = 100000;
+              <?php                    
 
                   if(isset($_GET['page'])){
                       $page = $_GET['page'];
                   } else {
                       $page ='';
                   }
-
+                  if(!isset($_POST['apply'])){
+                  $per_page = 10;
+                  }
+               
                   if ($page == "" || $page == 1) { // $page == "" means the index;
                       $page_1 = 1;
                   } else {
@@ -164,6 +189,7 @@ $(".myLink").click(function(){
                   <?php
                         }
                       }
+                      
                       // delete Members
                       if(isset($_GET['delete'])){
                         $the_member_id = $_GET['delete'];
@@ -181,6 +207,7 @@ $(".myLink").click(function(){
 
             <div class="pagination mr-4" id="selectmenu">
             <?php
+if(isset($_POST['apply']) or !isset($_POST['apply'])){            
 
     for($i=1; $i<=$no_of_page; $i++){
 
@@ -191,6 +218,7 @@ $(".myLink").click(function(){
         }
         
     }
+  }
   
    ?>
      <!-- <a href="#?pageno=1">&laquo;</a>
