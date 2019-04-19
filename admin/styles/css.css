@@ -285,10 +285,22 @@
     width: 50%;
   }
 
+  .search-box{
+    transform: translateY(-7em);
+  }
+  .center{
+    margin-bottom: 9em !important;
+  }
+  .search-btn{
+    display: none;
+  }
+  
+  .search-box:focus-within{
+    width: 60% !important;
+  }
   .desktop-t{
     text-align: center;
   }
-  
   .row1{
     width: 110%; 
   }
@@ -304,8 +316,8 @@
   .form-group .mobile{
     position: relative;
     top: 6em;
-    margin: -5em 1em 15em;
-    transform: translateX(43%);
+    margin: -5em 1em 15em 1em;
+    transform: translateX(50%);
   }
   .desktop-t{
     text-align: center;
@@ -322,8 +334,8 @@
   .center{
     position: relative;
     top: 6em;
-    margin: 1em 1em 15em;
-    transform: translateX(-16%);
+    margin: 1em 1em 15em 0em;
+    transform: translateX(-13%);
   }
 
   .search-txt{
