@@ -33,7 +33,7 @@
         <div class="inline form-group col-lg-3 ml-5">
           <select class="form-control" name="perpage" id="" >
             <option value="all">Show All</option>
-            <option value="10">10</option>
+            <option value="10" selected>10</option>
             <option value="25">25</option>
             <option value="50">50</option>
             <option value="100">100</option>
