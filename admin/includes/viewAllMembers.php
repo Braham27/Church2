@@ -131,9 +131,8 @@ if(isset($_POST['apply'])){
                   $user_first = $row['user_firstname'];
                   $user_tel = $row['user_tel'];
               ?>
-
+<tr id="data">
 <?php
-                 echo "<tr>";
                     
                  echo "<th scope='row'>" . $x++ . "</th>";
                  echo "<td>$user_last</td>";
