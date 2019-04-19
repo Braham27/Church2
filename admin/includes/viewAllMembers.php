@@ -153,7 +153,7 @@ if(isset($_POST['apply'])){
                       <i class='fas fa-envelope'></i></a>";             
                       
                  echo "<a class='pl-1 myLink pr-2 py-0'  id='popover' data-trigger='hover' rel='$user_tel' 
-                      data-content='$user_first' value='$user_last ' '  $user_first' data-toggle='modal' data-target='.bd-example-modal-lg'
+                      data-content='$user_first' value='$user_last $user_first' data-toggle='modal' data-target='.bd-example-modal-lg'
                       title='Send A sms to $user_first' href='javascript:void(0)' data-toggle='popover' data-placement='top'>
                         <i class='fas fa-sms'></i>
                       </a>";
@@ -164,7 +164,7 @@ if(isset($_POST['apply'])){
                       <i class='fas fa-edit'></i></a>";              
                       
                  echo "<a class='mr-2' href='members.php?delete=$user_id;' id='popover' data-toggle='popover' 
-                      title=' data-trigger='hover' 
+                      title='Delete $user_first' data-trigger='hover' 
                       data-content='Delete $user_first' data-placement='top' onclick='return confirm('Are you sure you want to Delete $user_last . ' ' . $user_first;?');'>
                       <i class='fas fa-trash-alt'></i></a>";                 
 ?>
