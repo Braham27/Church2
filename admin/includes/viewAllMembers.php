@@ -132,31 +132,45 @@ if(isset($_POST['apply'])){
                   $user_tel = $row['user_tel'];
               ?>
 
-                  <tr>
-                      <th scope="row"><?php echo $x++ ?></th>
-                      <td><?php echo $user_last ?></td>
-                      <td><?php echo $user_first ?></td>
-                      <td class="desktop pl-5 pr-0"><?php echo $user_email ?></td>
-                      <td class="desktop" ><?php if(!empty($position)){echo ucwords($position) ." ". "Of The"." ";} echo ucwords($ministry); if(!empty($position)){echo " "."Ministry";}  ?></td>
-                      <td colspan="2" class="px-0">
+<?php
+                 echo "<tr>";
+                    
+                 echo "<th scope='row'>" . $x++ . "</th>";
+                 echo "<td>$user_last</td>";
+                 echo "<td>$user_first</td>";
+                 echo "<td class='desktop pl-5 pr-0'>$user_email</td>";
+                 echo "<td class='desktop' ><?php if(!empty($position)){echo ucwords($position) .' '. 'Of The'.' ';} echo ucwords($ministry); if(!empty($position)){echo ' '.'Ministry';} </td>";
+                 echo "<td colspan='2' class='px-0'>";
+                    
+                 echo "<a class='mr-3' href=' id='popover' data-toggle='popover' 
+                      title='See More of $user_first' data-trigger='hover' 
+                      data-content=' data-placement='top'>
+                      <i class='fas fa-plus-square'></i></a>";
+
+                 echo "<a class='mr-2' href=' id='popover' data-toggle='popover' 
+                      title='Send A Mail to $user_first' data-trigger='hover' 
+                      data-content='Send A Mail' data-placement='top' >
+                      <i class='fas fa-envelope'></i></a>";             
                       
-                      <a class="mr-3" href="" id="popover" data-toggle="popover" 
-                        title="See More of <?php echo $user_first ?>" data-trigger="hover" 
-                        data-content="" data-placement="top">
-                        <i class="fas fa-plus-square"></i></a> 
+                 echo "<a class='pl-1 myLink pr-2 py-0'  id='popover' data-trigger='hover' rel='$user_tel' 
+                      data-content='$user_first' value='$user_last ' '  $user_first' data-toggle='modal' data-target='.bd-example-modal-lg'
+                      title='Send A sms to $user_first' href='javascript:void(0)' data-toggle='popover' data-placement='top'>
+                        <i class='fas fa-sms'></i>
+                      </a>";
+                      
+                 echo "<a class='mr-2 pb-1' href='members.php?link=editmember&m_id=$user_id;' id='popover' data-toggle='popover' 
+                      title='Edit' data-trigger='hover' 
+                      data-content=' data-placement='top'>
+                      <i class='fas fa-edit'></i></a>";              
+                      
+                 echo "<a class='mr-2' href='members.php?delete=$user_id;' id='popover' data-toggle='popover' 
+                      title=' data-trigger='hover' 
+                      data-content='Delete $user_first' data-placement='top' onclick='return confirm('Are you sure you want to Delete $user_last . ' ' . $user_first;?');'>
+                      <i class='fas fa-trash-alt'></i></a>";                 
+?>
 
-                        <a class="mr-2" href="" id="popover" data-toggle="popover" 
-                        title="Send A Mail to <?php echo $user_first ?>" data-trigger="hover" 
-                        data-content="Send A Mail" data-placement="top" >
-                        <i class="fas fa-envelope"></i></a>  
-
-                        <a class="pl-1 myLink pr-2 py-0"  id="popover" data-trigger="hover" rel="<?php echo $user_tel?>" 
-                        data-content="<?php echo $user_first ?>" value="<?php echo $user_last . " " . $user_first ?>" data-toggle="modal" data-target=".bd-example-modal-lg"
-                        title="Send A sms to <?php echo $user_first ?>" href='javascript:void(0)' data-toggle="popover" data-placement="top">
-                          <i class="fas fa-sms"></i>
-                        </a>
-
-
+</td>       
+</tr>
 <script type="text/javascript">
 
 $(".myLink").click(function(){
@@ -175,17 +189,7 @@ $(".myLink").click(function(){
       <?php include "sms.php"; ?>
 <!-- /END OF SMS -->
                                                          
-                        <a class="mr-2 pb-1" href="members.php?link=editmember&m_id=<?php echo $user_id; ?>" id="popover" data-toggle="popover" 
-                        title="Edit" data-trigger="hover" 
-                        data-content="" data-placement="top">
-                        <i class="fas fa-edit"></i></a> 
-                        
-                        <a class="mr-2" href="members.php?delete=<?php echo $user_id; ?>" id="popover" data-toggle="popover" 
-                        title="" data-trigger="hover" 
-                        data-content="Delete <?php echo $user_first ?>" data-placement="top" onclick="return confirm('Are you sure you want to Dele <?php echo $user_last . ' ' . $user_first; ?>?');">
-                        <i class="fas fa-trash-alt"></i></a> 
-                      </td>              
-                  </tr>
+
                   <?php
                         }
                       }
