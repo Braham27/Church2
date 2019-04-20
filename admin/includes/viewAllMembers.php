@@ -95,11 +95,11 @@ if(isset($_POST['apply'])){
               <script>
                 // $(document).ready(function(){
                 //   load_data();
-                //   function load_data(requested) {
+                //   function load_data(request) {
                 //     $.ajax({
                 //       url:"includes/fetch_database.php",
                 //       method:"POST",
-                //       data:{requested:requested},
+                //       data:{request:request},
                 //       success:function(data){
                 //         $("#data").html(data);
                 //       }
@@ -131,13 +131,13 @@ if(isset($_POST['apply'])){
             //    var request = $('input[name="myInput"]').val();
             //    $('input[name="myInput"]').keyup(function(){
             //      $("#data").load("includes/fetch_database.php", {
-            //       requested: request
+            //       request: request
             //           });
             //       });
             //    });
               </script>
-<p id="data"></p>
-<tbody>
+<p ></p>
+<tbody id="data">
               <?php                    
                   if(isset($_GET['page'])){
                       $page = $_GET['page'];
