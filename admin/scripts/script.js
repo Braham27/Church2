@@ -8,6 +8,8 @@
       $(function () {
         $('#popover').popover();
       });
+
+      // to change the button to input file
       
       $(function () {
         $("#img1").click(function () {
