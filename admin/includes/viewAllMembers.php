@@ -94,26 +94,36 @@ if(isset($_POST['apply'])){
                   
             <tbody>
               <script>
-              $(document).ready(function(){
-               load_data();
-               function load_data(request) {
-                 $.ajax({
-                   url:"fetch_database.php",
-                   method:"POST",
-                   data:{request:request},
-                   success:function(data){
-                     $("#data").html(data);
-                   }
-                 });
-               }
-               $("#myInput").keyup('change', function(){
-                 var search = $(this).val();
-                 if(search != ''){
-                   load_data(search);
-                 } else {
-                   load_data();
-                 }
-               )};
+             $(document).ready(function(){
+               var request;
+               $("#myInput").keyup(function(){
+                 request = $("#myInput").val();
+                 $("#comments").load("fetch_database.php", {
+                    request: request
+                }, alert('Really?'));
+            });
+               });
+            
+             // $(document).ready(function(){
+              //  load_data();
+              //  function load_data(request) {
+              //    $.ajax({
+              //      url:"fetch_database.php",
+              //      method:"POST",
+              //      data:{request:request},
+              //      success:function(data){
+              //        $("#data").html(data);
+              //      }
+              //    });
+              //  }
+              //  $("#myInput").keyup(function(){
+              //    var search = $(this).val();
+              //    if(search != ''){
+              //      load_data(search);
+              //    } else {
+              //      load_data();
+              //    }
+              //  )};
 
                 // $("#myInput").keyup('change', function(){
                 //   var value = $(this).val();
