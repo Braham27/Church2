@@ -113,6 +113,8 @@ if(isset($_POST['apply'])){
                  } else {
                    load_data();
                  }
+               )};
+
                 // $("#myInput").keyup('change', function(){
                 //   var value = $(this).val();
                 //   $.ajax({
@@ -124,7 +126,7 @@ if(isset($_POST['apply'])){
                 //     }
                 //   })
                 // })
-              })
+              });
               </script>
 
 <div id="data">
