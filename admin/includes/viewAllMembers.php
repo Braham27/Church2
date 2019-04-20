@@ -92,54 +92,53 @@ if(isset($_POST['apply'])){
                   </tr>
                 </thead>
                   
-            <tbody>
               <script>
+                // $(document).ready(function(){
+                 //  load_data();
+                 //  function load_data(request) {
+                 //    $.ajax({
+                 //      url:"fetch_database.php",
+                 //      method:"POST",
+                 //      data:{request:request},
+                 //      success:function(data){
+                 //        $("#data").html(data);
+                 //      }
+                 //    });
+                 //  }
+                 //  $("#myInput").keyup(function(){
+                 //    var search = $(this).val();
+                 //    if(search != ''){
+                 //      load_data(search);
+                 //    } else {
+                 //      load_data();
+                 //    }
+                 //  )};
+   
+                   // $("#myInput").keyup('change', function(){
+                   //   var value = $(this).val();
+                   //   $.ajax({
+                   //     url:'fetch_database.php',
+                   //     type:'POST',
+                   //     data: 'request='+value,
+                   //     success:function(data){
+                   //       $("#data").html(data);
+                   //     }
+                   //   })
+                   // })
+                 // });
+
              $(document).ready(function(){
                var request;
                $("#myInput").keyup(function(){
                  request = $("#myInput").val();
-                 $("#comments").load("fetch_database.php", {
-                    request: request
-                });
-            });
+                 $("#data").load("fetch_database.php", {
+                  requested: request
+                      });
+                  });
                });
-            
-             // $(document).ready(function(){
-              //  load_data();
-              //  function load_data(request) {
-              //    $.ajax({
-              //      url:"fetch_database.php",
-              //      method:"POST",
-              //      data:{request:request},
-              //      success:function(data){
-              //        $("#data").html(data);
-              //      }
-              //    });
-              //  }
-              //  $("#myInput").keyup(function(){
-              //    var search = $(this).val();
-              //    if(search != ''){
-              //      load_data(search);
-              //    } else {
-              //      load_data();
-              //    }
-              //  )};
-
-                // $("#myInput").keyup('change', function(){
-                //   var value = $(this).val();
-                //   $.ajax({
-                //     url:'fetch_database.php',
-                //     type:'POST',
-                //     data: 'request='+value,
-                //     success:function(data){
-                //       $("#data").html(data);
-                //     }
-                //   })
-                // })
-              // });
               </script>
-
-<div id="data">
+<p id="data"></p>
+<tbody>
               <?php                    
                   if(isset($_GET['page'])){
                       $page = $_GET['page'];
@@ -225,7 +224,7 @@ if(isset($_POST['apply'])){
                       echo "</tr>";
                   }}
 ?>
-</div>
+</tbody>
 
 <script type="text/javascript">
 
@@ -261,7 +260,7 @@ $(".myLink").click(function(){
                       }
                   ?>
 
-            </tbody>
+           
             </table>
 
             <div class="pagination mr-4" id="selectmenu">
