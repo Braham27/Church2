@@ -1,3 +1,4 @@
+<!-- Search Table -->
 <?php
 include 'db.php';
 
@@ -65,3 +66,16 @@ include 'db.php';
         }
     
 ?>
+
+<script type="text/javascript">
+
+$(".myLink").click(function(){
+  var phone = $(this).attr("rel");
+  var name = $(this).attr("value");
+  var first = $(this).attr("data-content");
+  
+  $('input.fl').val(name);
+  $('input.phone').val(phone);
+      });
+
+</script>           
