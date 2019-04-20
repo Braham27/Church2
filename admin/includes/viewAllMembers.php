@@ -100,7 +100,7 @@ if(isset($_POST['apply'])){
                  request = $("#myInput").val();
                  $("#comments").load("fetch_database.php", {
                     request: request
-                }, alert('Really?'));
+                });
             });
                });
             
@@ -136,7 +136,7 @@ if(isset($_POST['apply'])){
                 //     }
                 //   })
                 // })
-              });
+              // });
               </script>
 
 <div id="data">
