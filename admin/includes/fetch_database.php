@@ -1,15 +1,11 @@
-<?php include 'db.php' ?>
 <?php
+include 'db.php';
+
 if ($_POST['request']) {
+
     $request = $_POST['request'];
 
-   $search_user = "SELECT * FROM users";
-   $query_search_user = mysqli_query($conn, $search_user);
-   $count = mysqli_num_rows($query_search_user);
-   $no_of_page = ceil($count/$per_page); 
-   
-       
-   $search_user = "SELECT * FROM users WHERE user_firstname = $request OR  user_lastname = $request";
+   $search_user = "SELECT * FROM users WHERE user_firstname = $request";
    $query_search_user = mysqli_query($conn, $search_user);
 
    for($x = 1; $x <= $no_of_page; $x++){
