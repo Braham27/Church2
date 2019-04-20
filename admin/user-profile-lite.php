@@ -82,41 +82,41 @@
                             <div class="form-row">
                               <div class="form-group col-md-6">
                                 <label for="feFirstName">First Name</label>
-                                <input type="text" class="form-control" id="feFirstName" placeholder="First Name" value="Paul"> </div>
+                                <input type="text" class="form-control" name="fname" id="feFirstName" placeholder="First Name" value="Paul"> </div>
                               <div class="form-group col-md-6">
                                 <label for="feLastName">Last Name</label>
-                                <input type="text" class="form-control" id="feLastName" placeholder="Last Name" value="Daniel"> </div>
+                                <input type="text" class="form-control" name="lname" id="feLastName" placeholder="Last Name" value="Daniel"> </div>
                             </div>
                             <div class="form-row">
                               <div class="form-group col-md-6">
                                 <label for="feEmailAddress">Email</label>
-                                <input type="email" class="form-control" id="feEmailAddress" placeholder="Email" value="paul@example.com"> </div>
+                                <input type="email" class="form-control" name="email" id="feEmailAddress" placeholder="Email" value="paul@example.com"> </div>
                               <div class="form-group col-md-6">
                                 <label for="fePassword">Password</label>
-                                <input type="password" class="form-control" id="fePassword" placeholder="Password"> </div>
+                                <input type="password" class="form-control" name="pass" id="fePassword" placeholder="Password"> </div>
                             </div>
                             <div class="form-group">
                               <label for="feInputAddress">Address</label>
-                              <input type="text" class="form-control" id="feInputAddress" placeholder="1234 Main St"> </div>
+                              <input type="text" class="form-control" name="adress" id="feInputAddress" placeholder="1234 Main St"> </div>
                             <div class="form-row">
                               <div class="form-group col-md-6">
                                 <label for="feInputCity">City</label>
-                                <input type="text" class="form-control" id="feInputCity"> </div>
+                                <input type="text" class="form-control" name="city" id="feInputCity"> </div>
                               <div class="form-group col-md-4">
                                 <label for="feInputState">State</label>
-                                <select id="feInputState" class="form-control">
+                                <select id="feInputState" name="state" class="form-control">
                                   <option selected>Choose...</option>
                                   <option>...</option>
                                 </select>
                               </div>
                               <div class="form-group col-md-2">
                                 <label for="inputZip">Zip</label>
-                                <input type="text" class="form-control" id="inputZip"> </div>
+                                <input type="text" class="form-control" name="zip" id="inputZip"> </div>
                             </div>
                             <div class="form-row">
                               <div class="form-group col-md-12">
                                 <label for="feDescription">Description</label>
-                                <textarea class="form-control" name="feDescription" rows="5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio eaque, quidem, commodi soluta qui quae minima obcaecati quod dolorum sint alias, possimus illum assumenda eligendi cumque?</textarea>
+                                <textarea class="form-control" name="Description" rows="5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio eaque, quidem, commodi soluta qui quae minima obcaecati quod dolorum sint alias, possimus illum assumenda eligendi cumque?</textarea>
                               </div>
                             </div>
                             <button type="submit" class="btn btn-accent">Update Account</button>
