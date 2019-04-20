@@ -97,7 +97,7 @@ if(isset($_POST['apply'])){
                 //   load_data();
                 //   function load_data(requested) {
                 //     $.ajax({
-                //       url:"fetch_database.php",
+                //       url:"includes/fetch_database.php",
                 //       method:"POST",
                 //       data:{requested:requested},
                 //       success:function(data){
@@ -114,27 +114,27 @@ if(isset($_POST['apply'])){
                 //     }
                 //   )};
    
-                   // $('input[name="myInput"]').keyup('change', function(){
-                   //   var value = $(this).val();
-                   //   $.ajax({
-                   //     url:'fetch_database.php',
-                   //     type:'POST',
-                   //     data: 'request='+value,
-                   //     success:function(data){
-                   //       $("#data").html(data);
-                   //     }
-                   //   })
-                   // })
+                   $('input[name="myInput"]').keyup('change', function(){
+                     var value = $(this).val();
+                     $.ajax({
+                       url:'includes/fetch_database.php',
+                       type:'POST',
+                       data: 'request='+value,
+                       success:function(data){
+                         $("#data").html(data);
+                       }
+                     })
+                   })
                 //  }); 
 
-             $(document).ready(function(){
-               var request = $('input[name="myInput"]').val();
-               $('input[name="myInput"]').keyup(function(){
-                 $("#data").load("fetch_database.php", {
-                  requested: request
-                      });
-                  });
-               });
+            //  $(document).ready(function(){
+            //    var request = $('input[name="myInput"]').val();
+            //    $('input[name="myInput"]').keyup(function(){
+            //      $("#data").load("includes/fetch_database.php", {
+            //       requested: request
+            //           });
+            //       });
+            //    });
               </script>
 <p id="data"></p>
 <tbody>
