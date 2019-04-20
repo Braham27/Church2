@@ -41,12 +41,14 @@
                 <div class="card card-small mb-4 pt-3">
                   <div class="card-header border-bottom text-center">
                     <div class="mb-3 mx-auto">
-                      <img class="rounded-circle" src="images/Businessman.png" alt="User Avatar" width="110"> </div>
+---                 <img class="rounded-circle" src="images/Businessman.png" alt="User Avatar" width="110"> </div>
                     <h4 class="mb-0">Paul Daniel</h4>
-                    <span class="text-muted d-block mb-2">Project Manager</span>
+---                 <span class="text-muted d-block mb-2">Project Manager</span>
+<form action="post">
                     <button type="file" id="img1" class="mb-2 btn btn-sm btn-pill btn-outline-primary mr-2">
                       <i class="material-icons mr-1">person_add</i>Change Picture</button>
-                      <input type="file" id="my_file" style="display: none;" />
+                    <input type="file" id="my_file" name="file" style="display: none;" />
+</form>
                   </div>
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item px-4">
