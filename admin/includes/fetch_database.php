@@ -3,30 +3,15 @@
 if ($_POST['request']) {
     $request = $_POST['request'];
 
-    if(isset($_GET['page'])){
-        $page = $_GET['page'];
-    } else {
-        $page ='';
-    }
-    if(!isset($_POST['apply'])){
-    $per_page = 10;
-    }
- 
-    if ($page == "" || $page == 1) { // $page == "" means the index;
-        $page_1 = 1;
-    } else {
-        $page_1 = ($page * $per_page) - $per_page; //$per_page is the # of data that you need by page; the total should be equal to 0;
-        //or $page_1 = ($page-1) * $per_page
-    }   
-
    $search_user = "SELECT * FROM users";
    $query_search_user = mysqli_query($conn, $search_user);
    $count = mysqli_num_rows($query_search_user);
    $no_of_page = ceil($count/$per_page); 
    
-   $search_user = "SELECT * FROM users LIMIT $page_1, $per_page";
+       
+   $search_user = "SELECT * FROM users WHERE user_firstname like '%$request%' OR  user_lastname like '%$request%'";
    $query_search_user = mysqli_query($conn, $search_user);
-   
+
    for($x = 1; $x <= $no_of_page; $x++){
      
     while($row = mysqli_fetch_assoc($query_search_user)){
@@ -37,6 +22,7 @@ if ($_POST['request']) {
     $user_last = $row['user_lastname'];
     $user_first = $row['user_firstname'];
     $user_tel = $row['user_tel'];
+
   
    echo "<tr>";    
    echo "<th scope='row'>" . $x++ . "</th>";
