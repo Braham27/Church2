@@ -44,8 +44,9 @@
                       <img class="rounded-circle" src="images/Businessman.png" alt="User Avatar" width="110"> </div>
                     <h4 class="mb-0">Paul Daniel</h4>
                     <span class="text-muted d-block mb-2">Project Manager</span>
-                    <button type="button" class="mb-2 btn btn-sm btn-pill btn-outline-primary mr-2">
+                    <button type="file" id="img1" class="mb-2 btn btn-sm btn-pill btn-outline-primary mr-2">
                       <i class="material-icons mr-1">person_add</i>Change Picture</button>
+                      <input type="file" id="my_file" style="display: none;" />
                   </div>
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item px-4">
