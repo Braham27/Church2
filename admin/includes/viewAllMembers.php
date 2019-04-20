@@ -71,7 +71,7 @@ if(isset($_POST['apply'])){
 <div class="center">
     <div class="search">
       <div class="search-box">
-          <input type="text" class="search-txt" id="myInput" onkeyup="myFunction()" placeholder="Search Member">
+          <input type="text" class="search-txt" id="myInput" onkeyup="myFunction()" name='myInput' placeholder="Search Member">
           <button class="search-btn" type="submit">
               <i class="fas fa-search"></i>
           </button>
@@ -94,27 +94,27 @@ if(isset($_POST['apply'])){
                   
               <script>
                 // $(document).ready(function(){
-                 //  load_data();
-                 //  function load_data(request) {
-                 //    $.ajax({
-                 //      url:"fetch_database.php",
-                 //      method:"POST",
-                 //      data:{request:request},
-                 //      success:function(data){
-                 //        $("#data").html(data);
-                 //      }
-                 //    });
-                 //  }
-                 //  $("#myInput").keyup(function(){
-                 //    var search = $(this).val();
-                 //    if(search != ''){
-                 //      load_data(search);
-                 //    } else {
-                 //      load_data();
-                 //    }
-                 //  )};
+                //   load_data();
+                //   function load_data(requested) {
+                //     $.ajax({
+                //       url:"fetch_database.php",
+                //       method:"POST",
+                //       data:{requested:requested},
+                //       success:function(data){
+                //         $("#data").html(data);
+                //       }
+                //     });
+                //   }
+                //   $('input[name="myInput"]').keyup(function(){
+                //     var search = $(this).val();
+                //     if(search != ''){
+                //       load_data(search);
+                //     } else {
+                //       load_data();
+                //     }
+                //   )};
    
-                   // $("#myInput").keyup('change', function(){
+                   // $('input[name="myInput"]').keyup('change', function(){
                    //   var value = $(this).val();
                    //   $.ajax({
                    //     url:'fetch_database.php',
@@ -125,12 +125,11 @@ if(isset($_POST['apply'])){
                    //     }
                    //   })
                    // })
-                 // });
+                //  }); 
 
              $(document).ready(function(){
-               var request;
-               $("#myInput").keyup(function(){
-                 request = $("#myInput").val();
+               var request = $('input[name="myInput"]').val();
+               $('input[name="myInput"]').keyup(function(){
                  $("#data").load("fetch_database.php", {
                   requested: request
                       });
