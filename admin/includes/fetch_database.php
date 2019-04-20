@@ -9,7 +9,7 @@ if ($_POST['request']) {
    $no_of_page = ceil($count/$per_page); 
    
        
-   $search_user = "SELECT * FROM users WHERE user_firstname like '%$request%' OR  user_lastname like '%$request%'";
+   $search_user = "SELECT * FROM users WHERE user_firstname = $request OR  user_lastname = $request";
    $query_search_user = mysqli_query($conn, $search_user);
 
    for($x = 1; $x <= $no_of_page; $x++){
@@ -22,7 +22,6 @@ if ($_POST['request']) {
     $user_last = $row['user_lastname'];
     $user_first = $row['user_firstname'];
     $user_tel = $row['user_tel'];
-
   
    echo "<tr>";    
    echo "<th scope='row'>" . $x++ . "</th>";
