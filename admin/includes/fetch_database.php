@@ -1,9 +1,8 @@
 <?php
 include 'db.php';
 
-if ($_POST['request']) {
-
-    $request = $_POST['request'];
+   
+   $request = $_POST['requested'];
 
    $search_user = "SELECT * FROM users WHERE user_firstname = $request";
    $query_search_user = mysqli_query($conn, $search_user);
@@ -67,5 +66,4 @@ if ($_POST['request']) {
         echo "</tr>";
         }
     }
-}
 ?>
