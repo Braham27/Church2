@@ -1,4 +1,4 @@
-
+<?php include 'db.php' ?>
 <?php
 if ($_POST['request']) {
     $request = $_POST['request'];
