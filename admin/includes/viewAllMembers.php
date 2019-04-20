@@ -95,17 +95,35 @@ if(isset($_POST['apply'])){
             <tbody>
               <script>
               $(document).ready(function(){
-                $("#data").on('change', function(){
-                  var value = $(this).val();
-                  $.ajax({
-                    url:'fetch_database',
-                    type:'POST',
-                    data: 'request='+value,
-                    success:function(data){
-                      $
-                    }
-                  })
-                })
+               load_data();
+               function load_data(request) {
+                 $.ajax({
+                   url:"fetch_database.php",
+                   method:"POST",
+                   data:{request:request},
+                   success:function(data){
+                     $("#data").html(data);
+                   }
+                 });
+               }
+               $("#myInput").keyup('change', function(){
+                 var search = $(this).val();
+                 if(search != ''){
+                   load_data(search);
+                 } else {
+                   load_data();
+                 }
+                // $("#myInput").keyup('change', function(){
+                //   var value = $(this).val();
+                //   $.ajax({
+                //     url:'fetch_database.php',
+                //     type:'POST',
+                //     data: 'request='+value,
+                //     success:function(data){
+                //       $("#data").html(data);
+                //     }
+                //   })
+                // })
               })
               </script>
 
@@ -130,11 +148,11 @@ if(isset($_POST['apply'])){
                  $search_user = "SELECT * FROM users";
                  $query_search_user = mysqli_query($conn, $search_user);
                  $count = mysqli_num_rows($query_search_user);
-                 $no_of_page = ceil($count/$per_page); 
-                 
+                 $no_of_page = ceil($count/$per_page);           
+                
                  $search_user = "SELECT * FROM users LIMIT $page_1, $per_page";
                  $query_search_user = mysqli_query($conn, $search_user);
-                 
+                  
                  for($x = 1; $x <= $no_of_page; $x++){
                    
                   while($row = mysqli_fetch_assoc($query_search_user)){
@@ -145,14 +163,15 @@ if(isset($_POST['apply'])){
                   $user_last = $row['user_lastname'];
                   $user_first = $row['user_firstname'];
                   $user_tel = $row['user_tel'];
-                
+                 
+              
                  echo "<tr>";    
                  echo "<th scope='row'>" . $x++ . "</th>";
                  echo "<td>$user_last</td>";
                  echo "<td>$user_first</td>";
                  echo "<td class='desktop pl-5 pr-0'>$user_email</td>";
                  echo "<td class='desktop'>"; 
-                 
+
                  if(!empty($position)){
                    echo ucwords($position) .' '. 'Of The'.' ';
                   } 
