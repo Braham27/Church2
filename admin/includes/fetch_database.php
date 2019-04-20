@@ -4,9 +4,7 @@ include 'db.php';
 
     $request = $_POST['request'];
 
-    // echo $request;
-
-   $search_user = "SELECT * FROM users WHERE user_firstname = $request";
+   $search_user = "SELECT * FROM users WHERE user_firstname LIKE '$request%' OR user_lastname LIKE '$request%'";
    $query_search_user = mysqli_query($conn, $search_user);
 
     while($row = mysqli_fetch_assoc($query_search_user)){
