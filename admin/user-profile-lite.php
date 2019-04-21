@@ -1,5 +1,7 @@
 <?php include 'includes/admin_header.php'; ?>
+<?php
 
+?>
     <div class="container-fluid">
       <div class="row">
 
