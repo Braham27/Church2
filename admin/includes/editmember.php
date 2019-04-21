@@ -187,7 +187,7 @@ if(isset($_POST['addmember'])){
                           <div class="input-group input-group-seamless">
                             <select id="inputState" name="user_ministry" class="form-control">
                                 <option value="<?php echo $server_user_ministry; ?>" selected><?php echo $server_user_ministry; ?></option>
-                                <?php if($server_user_ministry !== 'pastoral'){ echo "<option value='pastoral'>Pastoral</option>"; } ?>
+                                <?php if($server_user_ministry !== 'church'){ echo "<option value='church'>Church</option>"; } ?>
                                 <?php if($server_user_ministry !== 'women'){ echo "<option value='women'>Women</option>"; } ?>
                                 <?php if($server_user_ministry !== 'men'){ echo "<option value='men'>Men</option>"; } ?>
                                 <?php if($server_user_ministry !== 'worship team'){ echo "<option value='worship team'>Worship Team</option>"; } ?>
