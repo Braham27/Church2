@@ -22,12 +22,8 @@
         });
     });     
 
-    if(document.getElementById('check').checked) {
-      $(".hide").css("display", "unset");
-  } else {
-      $(".hide").hide();
-  }
-
-  $('#check').click(function() {
+  $("input[type=checkbox]").click(function() {
     $(".hide").toggle(this.checked);
+    // $("input[type=checkbox]").enable();
+    $("#hide2").toggle(this.unhecked);
 });
