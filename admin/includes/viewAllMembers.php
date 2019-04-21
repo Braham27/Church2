@@ -182,11 +182,11 @@ if(isset($_POST['apply'])){
                  echo "<td class='desktop'>"; 
 
                  if(!empty($position)){
-                   echo ucwords($position) .' '. 'Of The'.' ';
-                  } 
-                  echo ucwords($ministry); 
-                  if(!empty($position)){
-                    echo ' '.'Ministry';
+                   echo ucwords($position) . ' ';
+                   echo ucwords($ministry) . ' ' . 'Ministry'; 
+                  }                   
+                  if(empty($position)){
+                    echo ucwords($ministry); 
                   } 
                   echo "</td>";
 
