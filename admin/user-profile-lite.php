@@ -103,12 +103,15 @@ $query = "SELECT * FROM users WHERE user_email = '{$email}'";
                                 <label for="feEmailAddress">Email</label>
                                 <input type="email" class="form-control" name="email" id="feEmailAddress" placeholder="Email" value="paul@example.com"> </div>
                              
-                              <div class="form-group col-md-6" id="spass">
-                                <input class="mx-2" id="check" type="checkbox"> Change the Password </div>
-                                
-                         <div class="form-group col-md-6 hide">
-                                <label for="fePassword">Password</label>
-                                <input type="password" class="form-control" name="pass" id="fePassword" placeholder="Password"  value="<?php  ?>"> </div>
+                              
+
+                         <div class="form-group col-md-6">
+                          <div id="spass">
+                            <input class="mx-2" id="check" type="checkbox"> <span id="hide2"> Show the Password </span> </div>
+                            <div class="hide">
+                            <label for="fePassword">Password</label>
+                            <input type="password" class="form-control" name="pass" placeholder="Password"  value="<?php  ?>"> </div>
+                            </div>
                             </div>
                             <div class="form-group">
                               <label for="feInputAddress">Address</label>
