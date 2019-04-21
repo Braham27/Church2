@@ -1,6 +1,6 @@
 <?php include 'includes/admin_header.php'; ?>
 <?php
-
+$query = "SELECT * FROM users"
 ?>
     <div class="container-fluid">
       <div class="row">
