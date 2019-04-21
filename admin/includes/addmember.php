@@ -159,7 +159,7 @@ if(isset($_POST['addmember'])){
                           <div class="input-group input-group-seamless">
                             <select id="inputState" name="user_ministry" class="form-control">
                                 <option value='' selected>Choose...</option>
-                                <option value='pastoral'>Pastoral</option>
+                                <option value='church'>Church</option>
                                 <option value='women'>Women</option>
                                 <option value='men'>Men</option>
                                 <option value='worship team'>Worship Team</option>
