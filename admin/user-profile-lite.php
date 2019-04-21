@@ -101,30 +101,30 @@ $query = "SELECT * FROM users WHERE user_email = '{$email}'";
                             <div class="form-row">
                               <div class="form-group col-md-6">
                                 <label for="feEmailAddress">Email</label>
-                                <input type="email" class="form-control" name="email" id="feEmailAddress" placeholder="Email" value="paul@example.com"> </div>
+                                <input type="email" class="form-control" name="email" id="feEmailAddress" placeholder="Email" value="<?php echo $_SESSION['email'] ?>"> </div>
                              
                               
 
                          <div class="form-group col-md-6">
                           <div id="spass">
-                            <input class="mx-2" id="check" type="checkbox"> <span id="hide2"> Show the Password </span> </div>
+                            <input class="mx-2" id="check" type="checkbox"> <span id="hide2"> To Change the Password? Click!!! </span> </div>
                             <div class="hide">
                             <label for="fePassword">Password</label>
-                            <input type="password" class="form-control" name="pass" placeholder="Password"  value="<?php  ?>"> </div>
+                            <input type="password" class="form-control" name="pass" placeholder="Change the Password"> </div>
                             </div>
                             </div>
                             <div class="form-group">
                               <label for="feInputAddress">Address</label>
-                              <input type="text" class="form-control" name="adress" id="feInputAddress" placeholder="1234 Main St" value="<?php ?>"> </div>
+                              <input type="text" class="form-control" name="adress" id="feInputAddress" placeholder="1234 Main St" value="<?php echo $_SESSION['address']; ?>"> </div>
                             <div class="form-row">
                               <div class="form-group col-md-6">
                                 <label for="feInputCity">City</label>
-                                <input type="text" class="form-control" name="city" id="feInputCity" value="<?php ?>"> </div>
+                                <input type="text" class="form-control" name="city" id="feInputCity" value="<?php echo $_SESSION['city']; ?>"> </div>
                               <div class="form-group col-md-4">
                                 <label for="feInputState">State</label>
                                 <select id="feInputState" name="state" class="form-control" >
-                                  <option selected>Choose...</option>
-                                  <option value="<?php ?>"></option>
+                                  <option selected><?php echo $_SESSION['state'] ?></option>
+                                  <option value=""></option>
                                 </select>
                               </div>
                               <div class="form-group col-md-2">
