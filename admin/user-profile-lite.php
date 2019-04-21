@@ -46,7 +46,13 @@
                     <div class="mb-3 mx-auto">
                     <img class="rounded-circle" src="img/<?php echo $_SESSION['picture'];?>" alt="User Avatar" width="90" height="90"> </div>
                     <h4 class="mb-0"><?php echo $_SESSION['last'] . " ". $_SESSION['first']; ?></h4>
----                 <span class="text-muted d-block mb-2">Project Manager</span>
+                    <span class="text-muted d-block mb-2"> <?php    if(!empty($_SESSION['position'])){
+                   echo ucwords($_SESSION['position']) .' '. 'Of The'.' ';
+                   echo ucwords($_SESSION['ministry']);
+                  } 
+                  if(empty($_SESSION['position'])){
+                    echo ' '.'Ministry';
+                  }  ?></span>
 <form action="post">
                     <button type="file" id="img1" class="mb-2 btn btn-sm btn-pill btn-outline-primary mr-2">
                       <i class="material-icons mr-1">person_add</i>Change Picture</button>
