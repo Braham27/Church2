@@ -44,8 +44,8 @@
                 <div class="card card-small mb-4 pt-3">
                   <div class="card-header border-bottom text-center">
                     <div class="mb-3 mx-auto">
----                 <img class="rounded-circle" src="images/"$_SESSION['picture'] alt="User Avatar" width="110"> </div>
-                    <h4 class="mb-0">Paul Daniel</h4>
+                    <img class="rounded-circle" src="img/<?php echo $_SESSION['picture'];?>" alt="User Avatar" width="90" height="90"> </div>
+                    <h4 class="mb-0"><?php echo $_SESSION['last'] . " ". $_SESSION['first']; ?></h4>
 ---                 <span class="text-muted d-block mb-2">Project Manager</span>
 <form action="post">
                     <button type="file" id="img1" class="mb-2 btn btn-sm btn-pill btn-outline-primary mr-2">
