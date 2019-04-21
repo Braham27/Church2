@@ -1,8 +1,5 @@
 <?php include 'includes/admin_header.php'; ?>
-<?php
-// $query = "SELECT * FROM users";
 
-?>
     <div class="container-fluid">
       <div class="row">
 
@@ -16,7 +13,12 @@
 <!-- Main Navbar -->
 <?php include 'includes/admin_nav.php'; ?>
 <!-- / .main-navbar -->
+<?php
+$email = $_SESSION['email'];
+$query = "SELECT * FROM users WHERE user_email = '{$email}'";
 
+
+?>
           </div> 
           <!-- ALERT -->
           <div class="alert alert-success alert-dismissible fade show mb-0" role="alert">
@@ -91,10 +93,10 @@
                             <div class="form-row">
                               <div class="form-group col-md-6">
                                 <label for="feFirstName">First Name</label>
-                                <input type="text" class="form-control" name="fname" id="feFirstName" placeholder="First Name" value="Paul"> </div>
+                                <input type="text" class="form-control" name="fname" id="feFirstName" placeholder="First Name" value="<?php echo $_SESSION['first']; ?>"> </div>
                               <div class="form-group col-md-6">
                                 <label for="feLastName">Last Name</label>
-                                <input type="text" class="form-control" name="lname" id="feLastName" placeholder="Last Name" value="Daniel"> </div>
+                                <input type="text" class="form-control" name="lname" id="feLastName" placeholder="Last Name" value="<?php echo $_SESSION['last']; ?>"> </div>
                             </div>
                             <div class="form-row">
                               <div class="form-group col-md-6">
@@ -102,20 +104,20 @@
                                 <input type="email" class="form-control" name="email" id="feEmailAddress" placeholder="Email" value="paul@example.com"> </div>
                               <div class="form-group col-md-6">
                                 <label for="fePassword">Password</label>
-                                <input type="password" class="form-control" name="pass" id="fePassword" placeholder="Password"> </div>
+                                <input type="password" class="form-control" name="pass" id="fePassword" placeholder="Password"  value="<?php ?>"> </div>
                             </div>
                             <div class="form-group">
                               <label for="feInputAddress">Address</label>
-                              <input type="text" class="form-control" name="adress" id="feInputAddress" placeholder="1234 Main St"> </div>
+                              <input type="text" class="form-control" name="adress" id="feInputAddress" placeholder="1234 Main St" value="<?php ?>"> </div>
                             <div class="form-row">
                               <div class="form-group col-md-6">
                                 <label for="feInputCity">City</label>
-                                <input type="text" class="form-control" name="city" id="feInputCity"> </div>
+                                <input type="text" class="form-control" name="city" id="feInputCity" value="<?php ?>"> </div>
                               <div class="form-group col-md-4">
                                 <label for="feInputState">State</label>
-                                <select id="feInputState" name="state" class="form-control">
+                                <select id="feInputState" name="state" class="form-control" >
                                   <option selected>Choose...</option>
-                                  <option>...</option>
+                                  <option value="<?php ?>"></option>
                                 </select>
                               </div>
                               <div class="form-group col-md-2">
