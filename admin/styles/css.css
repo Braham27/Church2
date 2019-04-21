@@ -347,5 +347,12 @@
     width: 80%;
     padding-right:unset; 
     }
-
 }
+
+.form-row > #spass{
+  margin-top: 2.5em !important;
+} 
+
+.hide{
+  display: none;
+} 
