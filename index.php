@@ -117,6 +117,10 @@ if(isset($_POST['signin'])){
 		$_SESSION['last'] = $server_user_lastname;
 		$_SESSION['position'] = $server_user_position;
 		$_SESSION['ministry'] = $server_user_ministry;
+		$_SESSION['address'] = $server_user_address;
+		$_SESSION['city'] = $server_user_city;
+		$_SESSION['state'] = $server_user_state;
+		$_SESSION['zip'] = $server_user_zip;
 
 	} elseif ($password !== $user_password || $email !== $user_email) {
 		echo "<br>"."<p style='color:white;text-align:center'>Wrong Password Or Email..</p>";
