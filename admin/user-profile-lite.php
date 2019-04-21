@@ -1,6 +1,7 @@
 <?php include 'includes/admin_header.php'; ?>
 <?php
-$query = "SELECT * FROM users"
+// $query = "SELECT * FROM users";
+
 ?>
     <div class="container-fluid">
       <div class="row">
@@ -43,7 +44,7 @@ $query = "SELECT * FROM users"
                 <div class="card card-small mb-4 pt-3">
                   <div class="card-header border-bottom text-center">
                     <div class="mb-3 mx-auto">
----                 <img class="rounded-circle" src="images/Businessman.png" alt="User Avatar" width="110"> </div>
+---                 <img class="rounded-circle" src="images/"$_SESSION['picture'] alt="User Avatar" width="110"> </div>
                     <h4 class="mb-0">Paul Daniel</h4>
 ---                 <span class="text-muted d-block mb-2">Project Manager</span>
 <form action="post">
