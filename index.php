@@ -99,7 +99,7 @@ if(isset($_POST['signin'])){
 	
 	$picture_name = $row['user_image'];
 	
-    // $server_user_ministry = $row['user_ministry'];
+    $server_user_ministry = $row['user_ministry'];
     $server_user_position = $row['position'];
     // $server_user_address = $row['user_address'];
     // $server_user_city = $row['user_city'];
@@ -115,6 +115,7 @@ if(isset($_POST['signin'])){
 		$_SESSION['first'] = $server_user_firstname;
 		$_SESSION['last'] = $server_user_lastname;
 		$_SESSION['position'] = $server_user_position;
+		$_SESSION['ministry'] = $server_user_ministry;
 
 
 	} elseif ($password !== $user_password || $email !== $user_email) {
