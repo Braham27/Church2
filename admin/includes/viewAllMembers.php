@@ -79,7 +79,6 @@ if(isset($_POST['apply'])){
     </div>
     </div>
 
-
                     <thead>
                 <tr>
                  
