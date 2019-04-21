@@ -101,22 +101,22 @@ if(isset($_POST['signin'])){
 	
     $server_user_ministry = $row['user_ministry'];
     $server_user_position = $row['position'];
-    // $server_user_address = $row['user_address'];
-    // $server_user_city = $row['user_city'];
-    // $server_user_state = $row['user_state'];
-    // $server_user_zip = $row['user_zip'];
-    // $server_user_description = $row['user_description'];
-    // $server_user_tel = $row['user_tel'];
+    $server_user_address = $row['user_address'];
+    $server_user_city = $row['user_city'];
+    $server_user_state = $row['user_state'];
+    $server_user_zip = $row['user_zip'];
+    $server_user_description = $row['user_description'];
+    $server_user_tel = $row['user_tel'];
 
 	if($password === $user_password && $email === $user_email){
 		header('location: admin');
 
+		$_SESSION['email'] = $user_email;
 		$_SESSION['picture'] = $picture_name;
 		$_SESSION['first'] = $server_user_firstname;
 		$_SESSION['last'] = $server_user_lastname;
 		$_SESSION['position'] = $server_user_position;
 		$_SESSION['ministry'] = $server_user_ministry;
-
 
 	} elseif ($password !== $user_password || $email !== $user_email) {
 		echo "<br>"."<p style='color:white;text-align:center'>Wrong Password Or Email..</p>";
