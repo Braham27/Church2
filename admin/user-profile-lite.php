@@ -13,14 +13,104 @@
 <!-- Main Navbar -->
 <?php include 'includes/admin_nav.php'; ?>
 <!-- / .main-navbar -->
+
 <?php
 
 
+if(isset($_POST['update'])){
 
+  $query = "SELECT * FROM users WHERE user_email = '{$_SESSION['email']}'";
+  $user_admin = mysqli_query($conn, $query);
+  
+    $fname = $_POST['fname'];
+    $lname = $_POST['lname'];
+    $email = $_POST['email'];
+
+    $password = $_POST['pass'];
+    $address = $_POST['address'];
+    $city = $_POST['city'];
+    $state = $_POST['state'];
+    $zip = $_POST['zip'];
+    $description = $_POST['Description'];
+    $phone = $_POST['tel'];
+
+    // for the picture
+    $errors = []; 
+    $fileExtensions = ['jpeg','jpg','png', ''];
+
+    $picture_name = $_FILES['name']['name'];
+    $picture_temp = $_FILES['name']['tmp_name'];
+if($picture_name){
+  echo "jhbjhbjh";
+}
+    $file_size = $_FILES['name']['size'];
+
+    $fileExtension = strtolower(end(explode('.',$picture_name)));
+
+  //  move_uploaded_file($picture_temp, "img/$picture_name");
+
+        $errors = []; // Store all foreseen and unforseen errors here
+
+      if(empty($picture_name)){
+
+         while ($row = mysqli_fetch_array($user_admin)){
+          $picture_name = $row['user_image'];}
+       
+
+        $editmembers = "UPDATE users SET user_firstname = '{$fname}', "; 
+        $editmembers .= "user_lastname = '{$lname}', user_password = '{$password}', ";
+        $editmembers .= "user_email = '{$email}', "; 
+        $editmembers .= "user_address = '{$address}', user_city = '{$city}', ";
+        $editmembers .= "user_state = '{$state}', user_zip = '{$zip}', ";
+        $editmembers .= "user_description = '{$description}', user_tel = {$phone} ";
+        $editmembers .= "WHERE user_email = '{$_SESSION['email']}'";
+
+        result($editmembers);        
+        checkQuery($result);
+
+        echo " <div class='alert alert-success alert-dismissible fade show mb-0' role='alert'>
+        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+          <span aria-hidden='true'>×</span>
+        </button>
+        <i class='fa fa-check mx-2'></i>
+        <strong>Success!</strong> Your profile has been updated! 
+      </div>";
+        
+      }  
+        elseif(!in_array($fileExtension,$fileExtensions) || $file_size > 2000000){
+        echo  $errors="<div class='alert bg-danger alert-accent alert-dismissible fade show mb-0' role='alert'>
+                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                          <span aria-hidden='true'></span>×</span>
+                        </button>
+                        <i class='fa fa-info mx-2'></i>
+                        Please upload a JPEG or PNG file and less than 2MB </div>";
+      } elseif(empty($errors)==true) {
+        move_uploaded_file($picture_temp,"img/".$picture_name);
+
+       selectUsers();
+       checkQuery($query_search_user);
+       $editmembers = "UPDATE users SET username = '{$username}', user_firstname = '{$fname}', "; 
+       $editmembers .= "user_lastname = '{$lname}', user_password = '{$password}', ";
+       $editmembers .= "user_email = '{$email}', user_image = '{$picture_name}', "; 
+       $editmembers .= "user_address = '{$address}', user_city = '{$city}', ";
+       $editmembers .= "user_state = '{$state}', user_zip = {$zip}, ";
+       $editmembers .= "user_description = '{$description}', user_tel = {$phone} ";
+       $editmembers .= "WHERE user_id = {$the_m_id}";
+
+       $query_editmembers = result($editmembers);           
+       checkQuery($query_editmembers);
+
+       echo "<div class='alert bg-success alert-accent alert-dismissible fade show mb-0' role='alert'>
+             <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+               <span aria-hidden='true'></span>×</span>
+             </button>
+             <i class='fa fa-info mx-2'></i>
+             <strong>Member Edit.</strong> Go To <a href='members.php?members' style='color:gray';box-shadow: inset 0 1px 3px rgba(0,0,0,.1), 0 5px 1px rgba(0,0,0,.1);>View All the members</a> <i class='far fa-hand-point-left'></i> </div>";
+  } else {
+           echo "";
+        }
+    }
 ?>
-          </div> 
-          <!-- ALERT -->
-         
           <!-- END ALERT -->
 
           <div class="main-content-container container-fluid px-4">
@@ -38,6 +128,8 @@
 
                 <div class="card card-small mb-4 pt-3">
                   <div class="card-header border-bottom text-center">
+
+<form action="post" enctype="multipart/form-data">
                     <div class="mb-3 mx-auto">
                     <img class="rounded-circle" src="img/<?php echo $_SESSION['picture'];?>" alt="User Avatar" width="90" height="90"> </div>
                     <h4 class="mb-0"><?php echo $_SESSION['last'] . " ". $_SESSION['first']; ?></h4>
@@ -48,11 +140,11 @@
                   if(empty($_SESSION['position'])){
                     echo ' '.'Ministry';
                   }  ?></span>
-<form action="post">
-                    <button type="file" id="img1" class="mb-2 btn btn-sm btn-pill btn-outline-primary mr-2">
+                    <button type="file" id="img1" name="name"class="mb-2 btn btn-sm btn-pill btn-outline-primary mr-2">
                       <i class="material-icons mr-1">person_add</i>Change Picture</button>
-                    <input type="file" id="my_file" name="name" style="display: none;" />
+                    <input type="file" id="my_file" style="display: none;" />
 </form>
+
                   </div>
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item px-4">
@@ -82,7 +174,7 @@
                     <li class="list-group-item p-3">
                       <div class="row">
                         <div class="col">
-                          <form>
+                          <form method="post" enctype="multipart/form-data">
                             <div class="form-row">
                               <div class="form-group col-md-6">
                                 <label for="feFirstName">First Name</label>
@@ -136,7 +228,7 @@
                                 <textarea class="form-control" name="Description" rows="5"> <?php echo $_SESSION['desc']; ?> </textarea>
                               </div>
                             </div>
-                            <button type="submit" name="update" class="btn btn-accent">Update Account</button>
+                            <button type="submit" name="update" class="btn btn-accent yow">Update Account</button>
                           </form>
                         </div>
                       </div>
