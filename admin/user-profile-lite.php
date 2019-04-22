@@ -21,6 +21,24 @@ if(isset($_POST['update'])){
 
   $query = "SELECT * FROM users WHERE user_email = '{$_SESSION['email']}'";
   $user_admin = mysqli_query($conn, $query);
+
+  while($row = mysqli_fetch_array($user_admin)){
+    $server_user_firstname = $row['user_firstname'];
+    $server_user_lastname = $row['user_lastname'];
+    $server_user_username = $row['username'];
+    $server_user_password = $row['user_password'];
+    $server_user_email = $row['user_email'];
+    $picture_name = $row['user_image'];
+    $server_user_ministry = $row['user_ministry'];
+    $server_user_position = $row['position'];
+    $server_user_address = $row['user_address'];
+    $server_user_city = $row['user_city'];
+    $server_user_state = $row['user_state'];
+    $server_user_zip = $row['user_zip'];
+    $server_user_description = $row['user_description'];
+    $server_user_tel = $row['user_tel'];
+}
+
   
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
@@ -38,12 +56,12 @@ if(isset($_POST['update'])){
     $errors = []; 
     $fileExtensions = ['jpeg','jpg','png', ''];
 
-    $picture_name = $_FILES['name']['name'];
-    $picture_temp = $_FILES['name']['tmp_name'];
+    $picture_name = $_FILES['filename']['name'];
+    $picture_temp = $_FILES['filename']['tmp_name'];
 if($picture_name){
   echo "jhbjhbjh";
 }
-    $file_size = $_FILES['name']['size'];
+    $file_size = $_FILES['filename']['size'];
 
     $fileExtension = strtolower(end(explode('.',$picture_name)));
 
@@ -89,13 +107,13 @@ if($picture_name){
 
        selectUsers();
        checkQuery($query_search_user);
-       $editmembers = "UPDATE users SET username = '{$username}', user_firstname = '{$fname}', "; 
+       $editmembers = "UPDATE users SET user_firstname = '{$fname}', "; 
        $editmembers .= "user_lastname = '{$lname}', user_password = '{$password}', ";
        $editmembers .= "user_email = '{$email}', user_image = '{$picture_name}', "; 
        $editmembers .= "user_address = '{$address}', user_city = '{$city}', ";
        $editmembers .= "user_state = '{$state}', user_zip = {$zip}, ";
        $editmembers .= "user_description = '{$description}', user_tel = {$phone} ";
-       $editmembers .= "WHERE user_id = {$the_m_id}";
+       $editmembers .= "WHERE user_email = '{$_SESSION['email']}'";
 
        $query_editmembers = result($editmembers);           
        checkQuery($query_editmembers);
@@ -125,25 +143,25 @@ if($picture_name){
             <!-- Default Light Table -->
             <div class="row">
               <div class="col-lg-4">
-
+                
+<form method="post" enctype="multipart/form-data">
                 <div class="card card-small mb-4 pt-3">
                   <div class="card-header border-bottom text-center">
-
-<form action="post" enctype="multipart/form-data">
+              
                     <div class="mb-3 mx-auto">
-                    <img class="rounded-circle" src="img/<?php echo $_SESSION['picture'];?>" alt="User Avatar" width="90" height="90"> </div>
-                    <h4 class="mb-0"><?php echo $_SESSION['last'] . " ". $_SESSION['first']; ?></h4>
-                    <span class="text-muted d-block mb-2"> <?php    if(!empty($_SESSION['position'])){
-                   echo ucwords($_SESSION['position']) .' '. 'Of The'.' ';
-                   echo ucwords($_SESSION['ministry']);
+                    <img class="rounded-circle" src="img/<?php echo $picture_name;?>" alt="User Avatar" width="90" height="90"> </div>
+                    <h4 class="mb-0"><?php echo $server_user_lastname . " ". $server_user_firstname; ?></h4>
+                    <span class="text-muted d-block mb-2"> <?php if(!empty($server_user_position)){
+                   echo ucwords($server_user_position) .' '. 'Of The'.' ';
+                   echo ucwords($server_user_ministry);
                   } 
-                  if(empty($_SESSION['position'])){
+                  if(empty($server_user_position)){
                     echo ' '.'Ministry';
                   }  ?></span>
-                    <button type="file" id="img1" name="name"class="mb-2 btn btn-sm btn-pill btn-outline-primary mr-2">
-                      <i class="material-icons mr-1">person_add</i>Change Picture</button>
-                    <input type="file" id="my_file" style="display: none;" />
-</form>
+                    <a type="file" id="img1"  class="mb-2 btn btn-sm btn-pill btn-outline-primary mr-2" name="filename">
+                      <i class="material-icons mr-1">person_add</i>Change Picture</a>
+                    <input type="file" id="my_file" name="filename" style="display: none;" >
+
 
                   </div>
                   <ul class="list-group list-group-flush">
@@ -172,11 +190,11 @@ if($picture_name){
                   </div>
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item p-3">
+
                       <div class="row">
                         <div class="col">
-                          <form method="post" enctype="multipart/form-data">
-                            <div class="form-row">
-                              <div class="form-group col-md-6">
+                          <div class="form-row">
+                            <div class="form-group col-md-6">
                                 <label for="feFirstName">First Name</label>
                                 <input type="text" class="form-control" name="fname" id="feFirstName" placeholder="First Name" value="<?php echo $_SESSION['first']; ?>"> </div>
                               <div class="form-group col-md-6">
@@ -229,7 +247,7 @@ if($picture_name){
                               </div>
                             </div>
                             <button type="submit" name="update" class="btn btn-accent yow">Update Account</button>
-                          </form>
+</form>
                         </div>
                       </div>
                     </li>
