@@ -14,9 +14,7 @@
 <?php include 'includes/admin_nav.php'; ?>
 <!-- / .main-navbar -->
 <?php
-$email = $_SESSION['email'];
-$query = "SELECT * FROM users WHERE user_email = '{$email}'";
-
+$query = "SELECT * FROM users WHERE user_email = '{$_SESSION['email']}'";
 
 ?>
           </div> 
@@ -101,7 +99,7 @@ $query = "SELECT * FROM users WHERE user_email = '{$email}'";
                             <div class="form-row">
                               <div class="form-group col-md-6">
                                 <label for="feEmailAddress">Email</label>
-                                <input type="email" class="form-control" name="email" id="feEmailAddress" placeholder="Email" value="<?php echo $_SESSION['email'] ?>"> </div>
+                                <input type="email" class="form-control" name="email" id="feEmailAddress" placeholder="Email" value="<?php echo $_SESSION['email']; ?>"> </div>
                              
                               
 
@@ -113,9 +111,15 @@ $query = "SELECT * FROM users WHERE user_email = '{$email}'";
                             <input type="password" class="form-control" name="pass" placeholder="Change the Password"> </div>
                             </div>
                             </div>
-                            <div class="form-group">
+                            
+                            <div class="form-row">
+                              <div class="form-group col-md-6">
+                                <label for="feEmailAddress">Phone</label>
+                                <input type="tel" class="form-control" name="tel" id="feEmailAddress" placeholder="Email" value="<?php echo $_SESSION['tel']; ?>"> </div>
+                            <div class="form-group col-md-6">
                               <label for="feInputAddress">Address</label>
                               <input type="text" class="form-control" name="adress" id="feInputAddress" placeholder="1234 Main St" value="<?php echo $_SESSION['address']; ?>"> </div>
+                </div>
                             <div class="form-row">
                               <div class="form-group col-md-6">
                                 <label for="feInputCity">City</label>
