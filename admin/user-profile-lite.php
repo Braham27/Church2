@@ -14,7 +14,8 @@
 <?php include 'includes/admin_nav.php'; ?>
 <!-- / .main-navbar -->
 <?php
-$query = "SELECT * FROM users WHERE user_email = '{$_SESSION['email']}'";
+
+
 
 ?>
           </div> 
@@ -56,7 +57,7 @@ $query = "SELECT * FROM users WHERE user_email = '{$_SESSION['email']}'";
 <form action="post">
                     <button type="file" id="img1" class="mb-2 btn btn-sm btn-pill btn-outline-primary mr-2">
                       <i class="material-icons mr-1">person_add</i>Change Picture</button>
-                    <input type="file" id="my_file" name="file" style="display: none;" />
+                    <input type="file" id="my_file" name="name" style="display: none;" />
 </form>
                   </div>
                   <ul class="list-group list-group-flush">
@@ -118,7 +119,7 @@ $query = "SELECT * FROM users WHERE user_email = '{$_SESSION['email']}'";
                                 <input type="tel" class="form-control" name="tel" id="feEmailAddress" placeholder="Email" value="<?php echo $_SESSION['tel']; ?>"> </div>
                             <div class="form-group col-md-6">
                               <label for="feInputAddress">Address</label>
-                              <input type="text" class="form-control" name="adress" id="feInputAddress" placeholder="1234 Main St" value="<?php echo $_SESSION['address']; ?>"> </div>
+                              <input type="text" class="form-control" name="address" id="feInputAddress" placeholder="1234 Main St" value="<?php echo $_SESSION['address']; ?>"> </div>
                 </div>
                             <div class="form-row">
                               <div class="form-group col-md-6">
@@ -141,7 +142,7 @@ $query = "SELECT * FROM users WHERE user_email = '{$_SESSION['email']}'";
                                 <textarea class="form-control" name="Description" rows="5"> <?php echo $_SESSION['desc']; ?> </textarea>
                               </div>
                             </div>
-                            <button type="submit" class="btn btn-accent">Update Account</button>
+                            <button type="submit" name="update" class="btn btn-accent">Update Account</button>
                           </form>
                         </div>
                       </div>
