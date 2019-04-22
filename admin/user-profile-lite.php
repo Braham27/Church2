@@ -124,17 +124,17 @@ $query = "SELECT * FROM users WHERE user_email = '{$email}'";
                                 <label for="feInputState">State</label>
                                 <select id="feInputState" name="state" class="form-control" >
                                   <option selected><?php echo $_SESSION['state'] ?></option>
-                                  <option value=""></option>
+                                  <option value="others">Others</option>
                                 </select>
                               </div>
                               <div class="form-group col-md-2">
                                 <label for="inputZip">Zip</label>
-                                <input type="text" class="form-control" name="zip" id="inputZip"> </div>
+                                <input type="text" class="form-control" name="zip" id="inputZip" value="<?php echo $_SESSION['zip']; ?>"> </div>
                             </div>
                             <div class="form-row">
                               <div class="form-group col-md-12">
                                 <label for="feDescription">Description</label>
-                                <textarea class="form-control" name="Description" rows="5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio eaque, quidem, commodi soluta qui quae minima obcaecati quod dolorum sint alias, possimus illum assumenda eligendi cumque?</textarea>
+                                <textarea class="form-control" name="Description" rows="5"> <?php echo $_SESSION['desc']; ?> </textarea>
                               </div>
                             </div>
                             <button type="submit" class="btn btn-accent">Update Account</button>
