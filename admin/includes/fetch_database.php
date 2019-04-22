@@ -136,12 +136,13 @@ if(isset($_POST['update'])){
         result($editmembers);        
         checkQuery($result);
 
-        echo "<div class='alert bg-success alert-accent alert-dismissible fade show mb-0' role='alert'>
-              <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                <span aria-hidden='true'></span>×</span>
-              </button>
-              <i class='fa fa-info mx-2'></i>
-              <strong>Member Edit.</strong> Go To <a href='members.php?members' style='color:gray';box-shadow: inset 0 1px 3px rgba(0,0,0,.1), 0 5px 1px rgba(0,0,0,.1);>View All the members</a> <i class='far fa-hand-point-left'></i> </div>";
+        echo " <div class='alert alert-success alert-dismissible fade show mb-0' role='alert'>
+        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+          <span aria-hidden='true'>×</span>
+        </button>
+        <i class='fa fa-check mx-2'></i>
+        <strong>Success!</strong> Your profile has been updated! 
+      </div>";
         
       }  
         elseif(!in_array($fileExtension,$fileExtensions) || $file_size > 2000000){
@@ -150,7 +151,7 @@ if(isset($_POST['update'])){
                           <span aria-hidden='true'></span>×</span>
                         </button>
                         <i class='fa fa-info mx-2'></i>
-                        Either the file extension of the picture you Choose Or to much Size. Please upload a JPEG or PNG file and less than 2MB </div>";
+                        Please upload a JPEG or PNG file and less than 2MB </div>";
       } elseif(empty($errors)==true) {
         move_uploaded_file($picture_temp,"img/".$picture_name);
 
