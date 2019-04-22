@@ -26,9 +26,9 @@ if (isset($_GET['m_id'])) {
 ?>
 
 <?php
-if(isset($_POST['addmember'])){
+if(isset($_POST['editmember'])){
 
-    $submit= $_POST['addmember'];
+    $submit= $_POST['editmember'];
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
     $username = $_POST['username'];
@@ -289,7 +289,7 @@ if(isset($_POST['addmember'])){
                                 <textarea class="form-control" name=user_description rows="5"><?php echo $server_user_description; ?></textarea>
                               </div>
                  
-                              <input class="mt-3 mb-4 btn btn-sm btn-primary mr-1 col-md-2 offset-md-5" type="submit" name="addmember" value="Edit Member">
+                              <input class="mt-3 mb-4 btn btn-sm btn-primary mr-1 col-md-2 offset-md-5" type="submit" name="editmember" value="Edit Member">
 
                           </div>
                     </li>
