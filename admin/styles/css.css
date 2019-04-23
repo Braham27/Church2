@@ -356,8 +356,8 @@
 
 .hide{
   display: none;
-  /* margin-left: 1.9em;
-  margin-top: -1.6em; */
+  margin-left: 1.9em;
+  margin-top: -1.6em;
   position: relative;
   z-index: 4;
 } 
