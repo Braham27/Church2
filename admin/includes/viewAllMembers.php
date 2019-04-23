@@ -131,7 +131,7 @@ if(isset($_POST['apply'])){
             //    $('input[name="myInput"]').keyup(function(){
             //      $("#data").load("includes/fetch_database.php", {
             //       request: request
-            //           });
+            //           });<br>
             //       });
             //    });
               </script>
