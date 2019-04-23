@@ -16,29 +16,28 @@
 
 <?php
 
+$query = "SELECT * FROM users WHERE user_email = '{$_SESSION['email']}'";
+$user_admin = mysqli_query($conn, $query);
 
-if(isset($_POST['update'])){
-
-  $query = "SELECT * FROM users WHERE user_email = '{$_SESSION['email']}'";
-  $user_admin = mysqli_query($conn, $query);
-
-  while($row = mysqli_fetch_array($user_admin)){
-    $server_user_firstname = $row['user_firstname'];
-    $server_user_lastname = $row['user_lastname'];
-    $server_user_username = $row['username'];
-    $server_user_password = $row['user_password'];
-    $server_user_email = $row['user_email'];
-    $picture_name = $row['user_image'];
-    $server_user_ministry = $row['user_ministry'];
-    $server_user_position = $row['position'];
-    $server_user_address = $row['user_address'];
-    $server_user_city = $row['user_city'];
-    $server_user_state = $row['user_state'];
-    $server_user_zip = $row['user_zip'];
-    $server_user_description = $row['user_description'];
-    $server_user_tel = $row['user_tel'];
+while($row = mysqli_fetch_array($user_admin)){
+  $server_user_firstname = $row['user_firstname'];
+  $server_user_lastname = $row['user_lastname'];
+  $server_user_username = $row['username'];
+  $server_user_password = $row['user_password'];
+  $server_user_email = $row['user_email'];
+  $picture_name = $row['user_image'];
+  $server_user_ministry = $row['user_ministry'];
+  $server_user_position = $row['position'];
+  $server_user_address = $row['user_address'];
+  $server_user_city = $row['user_city'];
+  $server_user_state = $row['user_state'];
+  $server_user_zip = $row['user_zip'];
+  $server_user_description = $row['user_description'];
+  $server_user_tel = $row['user_tel'];
 }
 
+
+if(isset($_POST['update'])){
   
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
@@ -58,9 +57,7 @@ if(isset($_POST['update'])){
 
     $picture_name = $_FILES['filename']['name'];
     $picture_temp = $_FILES['filename']['tmp_name'];
-if($picture_name){
-  echo "jhbjhbjh";
-}
+
     $file_size = $_FILES['filename']['size'];
 
     $fileExtension = strtolower(end(explode('.',$picture_name)));
@@ -74,6 +71,10 @@ if($picture_name){
          while ($row = mysqli_fetch_array($user_admin)){
           $picture_name = $row['user_image'];}
        
+      if(empty($password)){
+        while ($row = mysqli_fetch_array($user_admin)){
+          $password = $row['user_password'];}
+      }
 
         $editmembers = "UPDATE users SET user_firstname = '{$fname}', "; 
         $editmembers .= "user_lastname = '{$lname}', user_password = '{$password}', ";
@@ -143,13 +144,23 @@ if($picture_name){
             <!-- Default Light Table -->
             <div class="row">
               <div class="col-lg-4">
-                
+              <script>
+$(function(){
+  $('#my_file').change( function(e) {
+    var img = URL.createObjectURL(e.target.files[0]);
+        // var img = file.name;
+        $('img .imgg').attr('src', 'img/file.name');
+    });
+  })
+});
+</script>                  
+                      
 <form method="post" enctype="multipart/form-data">
                 <div class="card card-small mb-4 pt-3">
                   <div class="card-header border-bottom text-center">
-              
-                    <div class="mb-3 mx-auto">
-                    <img class="rounded-circle" src="img/<?php echo $picture_name;?>" alt="User Avatar" width="90" height="90"> </div>
+
+         <div id="im" class="mb-3 mx-auto">
+                    <img class="rounded-circle imgg" src="img/<?php echo $picture_name;?>" alt="User Avatar" width="90" height="90"> </div>
                     <h4 class="mb-0"><?php echo $server_user_lastname . " ". $server_user_firstname; ?></h4>
                     <span class="text-muted d-block mb-2"> <?php if(!empty($server_user_position)){
                    echo ucwords($server_user_position) .' '. 'Of The'.' ';
@@ -160,8 +171,7 @@ if($picture_name){
                   }  ?></span>
                     <a type="file" id="img1"  class="mb-2 btn btn-sm btn-pill btn-outline-primary mr-2" name="filename">
                       <i class="material-icons mr-1">person_add</i>Change Picture</a>
-                    <input type="file" id="my_file" name="filename" style="display: none;" >
-
+                    <input type="file" id="my_file" name="filename" >
 
                   </div>
                   <ul class="list-group list-group-flush">
@@ -189,22 +199,21 @@ if($picture_name){
                     <h6 class="m-0">Account Details</h6>
                   </div>
                   <ul class="list-group list-group-flush">
-                    <li class="list-group-item p-3">
-
+                    <li class="list-group-item p-3">                         
                       <div class="row">
                         <div class="col">
                           <div class="form-row">
                             <div class="form-group col-md-6">
+                              <label for="feLastName">Last Name</label>
+                              <input type="text" class="form-control" name="lname" id="feLastName" placeholder="Last Name" value="<?php echo $server_user_lastname ; ?>"> </div>
+                            <div class="form-group col-md-6">
                                 <label for="feFirstName">First Name</label>
-                                <input type="text" class="form-control" name="fname" id="feFirstName" placeholder="First Name" value="<?php echo $_SESSION['first']; ?>"> </div>
-                              <div class="form-group col-md-6">
-                                <label for="feLastName">Last Name</label>
-                                <input type="text" class="form-control" name="lname" id="feLastName" placeholder="Last Name" value="<?php echo $_SESSION['last']; ?>"> </div>
+                                <input type="text" class="form-control" name="fname" id="feFirstName" placeholder="First Name" value="<?php echo $server_user_firstname; ?>"> </div>
                             </div>
                             <div class="form-row">
                               <div class="form-group col-md-6">
                                 <label for="feEmailAddress">Email</label>
-                                <input type="email" class="form-control" name="email" id="feEmailAddress" placeholder="Email" value="<?php echo $_SESSION['email']; ?>"> </div>
+                                <input type="email" class="form-control" name="email" id="feEmailAddress" placeholder="Email" value="<?php echo $server_user_email; ?>"> </div>
                              
                               
 
@@ -216,34 +225,33 @@ if($picture_name){
                             <input type="password" class="form-control" name="pass" placeholder="Change the Password"> </div>
                             </div>
                             </div>
-                            
                             <div class="form-row">
                               <div class="form-group col-md-6">
                                 <label for="feEmailAddress">Phone</label>
-                                <input type="tel" class="form-control" name="tel" id="feEmailAddress" placeholder="Email" value="<?php echo $_SESSION['tel']; ?>"> </div>
+                                <input type="tel" class="form-control" name="tel" id="feEmailAddress" placeholder="Email" value="<?php echo $server_user_tel; ?>"> </div>
                             <div class="form-group col-md-6">
                               <label for="feInputAddress">Address</label>
-                              <input type="text" class="form-control" name="address" id="feInputAddress" placeholder="1234 Main St" value="<?php echo $_SESSION['address']; ?>"> </div>
+                              <input type="text" class="form-control" name="address" id="feInputAddress" placeholder="1234 Main St" value="<?php echo $server_user_address; ?>"> </div>
                 </div>
                             <div class="form-row">
                               <div class="form-group col-md-6">
                                 <label for="feInputCity">City</label>
-                                <input type="text" class="form-control" name="city" id="feInputCity" value="<?php echo $_SESSION['city']; ?>"> </div>
+                                <input type="text" class="form-control" name="city" id="feInputCity" value="<?php echo $server_user_city; ?>"> </div>
                               <div class="form-group col-md-4">
                                 <label for="feInputState">State</label>
                                 <select id="feInputState" name="state" class="form-control" >
-                                  <option selected><?php echo $_SESSION['state'] ?></option>
+                                  <option selected><?php echo $server_user_state; ?></option>
                                   <option value="others">Others</option>
                                 </select>
                               </div>
                               <div class="form-group col-md-2">
                                 <label for="inputZip">Zip</label>
-                                <input type="text" class="form-control" name="zip" id="inputZip" value="<?php echo $_SESSION['zip']; ?>"> </div>
+                                <input type="text" class="form-control" name="zip" id="inputZip" value="<?php echo $server_user_zip; ?>"> </div>
                             </div>
                             <div class="form-row">
                               <div class="form-group col-md-12">
                                 <label for="feDescription">Description</label>
-                                <textarea class="form-control" name="Description" rows="5"> <?php echo $_SESSION['desc']; ?> </textarea>
+                                <textarea class="form-control" name="Description" rows="5"> <?php echo $server_user_description; ?> </textarea>
                               </div>
                             </div>
                             <button type="submit" name="update" class="btn btn-accent yow">Update Account</button>
