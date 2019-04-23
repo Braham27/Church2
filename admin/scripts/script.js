@@ -15,11 +15,11 @@
         $("#img1").click(function () {
             $("#my_file").click();
         });
-        $("#my_file").change(function () {
-            var file_name = this.value.replace(/\\/g, '/').replace(/.*\//, '')
-            $('#spanImageName').html(file_name);
-            $('filePath').val($(this).val());
-        });
+    //     $("#my_file").change(function () {
+    //         var file_name = this.value.replace(/\\/g, '/').replace(/.*\//, '')
+    //         $('#spanImageName').html(file_name);
+    //         $('filePath').val($(this).val());
+    //     });
     });     
 
   $("input[type=checkbox]").click(function() {
