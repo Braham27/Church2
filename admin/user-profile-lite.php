@@ -119,12 +119,13 @@ if(isset($_POST['update'])){
        $query_editmembers = result($editmembers);           
        checkQuery($query_editmembers);
 
-       echo "<div class='alert bg-success alert-accent alert-dismissible fade show mb-0' role='alert'>
-             <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-               <span aria-hidden='true'></span>×</span>
-             </button>
-             <i class='fa fa-info mx-2'></i>
-             <strong>Member Edit.</strong> Go To <a href='members.php?members' style='color:gray';box-shadow: inset 0 1px 3px rgba(0,0,0,.1), 0 5px 1px rgba(0,0,0,.1);>View All the members</a> <i class='far fa-hand-point-left'></i> </div>";
+       echo " <div class='alert alert-success alert-dismissible fade show mb-0' role='alert'>
+        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+          <span aria-hidden='true'>×</span>
+        </button>
+        <i class='fa fa-check mx-2'></i>
+        <strong>Success!</strong> Your profile has been updated! 
+      </div>";
   } else {
            echo "";
         }
@@ -147,12 +148,21 @@ if(isset($_POST['update'])){
               <script>
 $(function(){
   $('#my_file').change( function(e) {
-    var img = URL.createObjectURL(e.target.files[0]);
-        // var img = file.name;
-        $('.imgg').attr('src', 'img/file.name');
+    // var img = URL.createObjectURL(e.target.files[0]);
+        var img = $('#my_file').val();
+        $('.imgg').attr('src', 'img/'+img);
     });
   })
 });
+
+// $(function(){
+//   $('#my_file').change( function(e) {
+//     var img = URL.createObjectURL(e.target.files[0]);
+//         // var img = file.name;
+//         $('.imgg').attr('src', 'img/file.name');
+//     });
+//   })
+// });
 </script>                  
                       
 <form method="post" enctype="multipart/form-data">
