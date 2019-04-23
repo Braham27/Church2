@@ -149,7 +149,7 @@ $(function(){
   $('#my_file').change( function(e) {
     var img = URL.createObjectURL(e.target.files[0]);
         // var img = file.name;
-        $('img .imgg').attr('src', 'img/file.name');
+        $('.imgg').attr('src', 'img/file.name');
     });
   })
 });
