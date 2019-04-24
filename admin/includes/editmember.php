@@ -96,7 +96,7 @@ if(isset($_POST['editmember'])){
                           <span aria-hidden='true'></span>×</span>
                         </button>
                         <i class='fa fa-info mx-2'></i>
-                        Either the file extension of the picture you Choose Or to much Size. Please upload a JPEG or PNG file and less than 2MB </div>";
+                        Please upload a JPEG or PNG file and less than 2MB </div>";
       } elseif(empty($errors)==true) {
         move_uploaded_file($picture_temp,"img/".$picture_name);
 
