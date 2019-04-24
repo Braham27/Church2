@@ -29,15 +29,18 @@ img{max-width:100%;}
 /*end reset*/
 html, body{
     font-size: 100%;
-    background: url(../images/1.jpg)repeat 0px 0px;
+	background: #F6F6F7;
+    /* background: url(../images/1.jpg)repeat 0px 0px; */
     background-attachment: fixed;
 	-webkit-background-size:cover;
 	-moz-background-size:cover; 
 	background-size:cover;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'montserrat', sans-serif;
+	/* font-family: Poppins-Medium;   */
 }
 h1,h2,h3,h4,h5,h6{
-	font-family: 'Pathway Gothic One', sans-serif;
+	font-family: Poppins-Medium;  
+	/* font-family: 'montserrat', sans-serif; */
 	margin:0;
 }
 ul,label{
@@ -64,23 +67,27 @@ input[type="submit"],input[type="reset"]{
     height: 100%;
 }
 .main h1 {
+	font-family: Poppins-Medium;  
     text-align: center;
-    color: #fff;
-    letter-spacing: 3px;
-    font-size: 3em;
-    margin-bottom: 1.3em;
+    color: #777;
+    /* letter-spacing: 1px; */
+    font-size: 2em;
+    font-weight: 550;
+    margin-bottom: .3em;
 	text-transform: uppercase;
-	font-family: 'Pathway Gothic One', sans-serif;
 }
 #wrapper{
     width: 670px;
-    overflow: hidden;
+	overflow: hidden;
+	box-shadow: -1px 1px 10px #333333;
+	
 }
 #steps{
     width:670px;
 	/*height:320px;*/
     overflow:hidden;
-	background: rgba(76, 72, 72, 0.47);
+	background: rgba(255, 255, 255, 0.47);
+
 }
 .step{
     float:left;
@@ -90,6 +97,7 @@ input[type="submit"],input[type="reset"]{
 #navigation {
     height: 45px;
     margin-bottom: 20px;
+    margin-top: 2.3em;
 	display: inline-block;
 }
 #navigation ul{
@@ -121,7 +129,7 @@ input[type="submit"],input[type="reset"]{
 	content: '';
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
-    border-top: 10px solid #00e8ff;
+    border-top: 10px solid #007bff;
     position: absolute;
     top: -27%;
     left: 40%;
@@ -135,24 +143,26 @@ input[type="submit"],input[type="reset"]{
     top: -101%;
     left: 14%;
     padding: .3em 1em;
-    background: #00e8ff;
-    color: #fff;
+    background: #ffffff;
+    color: #007bff;
     height: 25px;
     line-height: 22px;
     font-size: 14px;
 	opacity:0;
+	box-shadow: 0px 0px 10px #888888;
 }
 #navigation ul li a:hover,
 #navigation ul li.selected a{
-    color: #fff;
+    color: #007bff;
 }
 #steps form fieldset{
     border:none;
-    padding-bottom:0px;
+	padding-bottom:0px;
+	
 }
 #steps form legend {
     text-align: center;
-    color: #00e8ff;
+    color: #007bff;
     font-size: 34px;
     font-weight: 600;
     text-transform: uppercase;
@@ -163,7 +173,7 @@ input[type="submit"],input[type="reset"]{
 .abt-ab-right h3 {
     font-size: 28px;
     text-transform: uppercase;
-    color:#fff;
+    color:#333333;
     letter-spacing: 2px;
 }
 .abt-ab-right p {
@@ -233,16 +243,16 @@ p.step_layouts {
 }
 .abcontact-grid input[type="submit"] {
 	padding: 10px 40px;
-	background-color:#00e8ff;
-	color: #fff;
+	background-color:#007bff;
+	color: #ffffff;
 	font-size: 16px;
 	border:none;
 	outline:none;
 	cursor:pointer;
 }
 .abcontact-grid input[type="submit"]:hover {
-	color: #FFF;
-	background-color:#212121;
+	color: #ffffff;
+	background-color:#777;
 }
 .ab-con-left {
     float: left;
@@ -255,24 +265,24 @@ p.step_layouts {
 }
 .ab-con-right p {
     font-size: 14px;
-    color: #fff;
+    color: #333333;
     line-height: 28px;
     margin: 8px 0;
 }
 .ab-con-right p a {
-    color: #fff;
+    color: #333333;
     text-decoration: none;
 }
 .ab-con-right p a:hover {
-    color: #00e8ff;
+    color: #007bff;
 }
 .ab-con-right span i {
-    color: #00e8ff;
+    color: #007bff;
     padding-right: 10px;
 }
 .ab-con-right h6 {
     font-size: 24px;
-    color: #fff;
+    color: #333333;
     letter-spacing: 2px;
     text-align: left;
     margin-bottom: 16px;
@@ -293,18 +303,18 @@ ul.address li ul.address-text li:nth-child(1) {
 ul.address li ul.address-text li {
     display: inline-block;
     font-size: 0.95em;
-    color: #fff;
+    color: #333333;
     margin-top: 0.9em;
     font-weight: 100;
 }
 .address-text li a{
-    color: #fff;
+    color: #333333;
 }
 .abt-ab-right h5 {
     font-size: 20px;
     letter-spacing: 3px;
     margin-top: 10px;
-    color: #00e8ff;
+    color: #007bff;
 }
 /*-- work --*/
 .column .ab_work_effect{
@@ -595,7 +605,7 @@ ul.address li ul.address-text li:nth-child(1) {
 		left: 32%;
 		border-left: 8px solid transparent;
 		border-right: 8px solid transparent;
-		border-top: 8px solid #00e8ff;
+		border-top: 8px solid #007bff;
 	}
 
 	#steps form legend {
