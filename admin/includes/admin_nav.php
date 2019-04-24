@@ -1,4 +1,15 @@
+<?php
 
+$query = "SELECT * FROM users WHERE user_email = '{$_SESSION['email']}'";
+$user_admin = mysqli_query($conn, $query);
+
+while($row = mysqli_fetch_array($user_admin)){
+  $server_user_firstname = $row['user_firstname'];
+  $server_user_lastname = $row['user_lastname'];
+  $server_picture_name = $row['user_image'];
+  $server_user_position = $row['position'];
+}
+?>
 <nav class="navbar align-items-stretch navbar-light flex-md-nowrap p-0">
               <form action="#" class="main-navbar__search w-100 d-none d-md-flex d-lg-flex">
                 <div class="input-group input-group-seamless ml-3">
@@ -48,8 +59,8 @@
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle text-nowrap px-3" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                    <img class="user-avatar rounded-circle mr-2" width="40" height="40" style="border-radius:100%" src="img/<?php echo $_SESSION['picture'];?>" alt="<?php echo $_SESSION['position'];?>">
-                    <span class="d-none d-md-inline-block"><?php echo $_SESSION['last'] . " " . $_SESSION['first'];?></span>
+                    <img class="user-avatar rounded-circle mr-2" width="40" height="40" style="border-radius:100%" src="img/<?php echo $server_picture_name;?>" alt="<?php echo $server_user_position;?>">
+                    <span class="d-none d-md-inline-block"><?php echo $server_user_lastname . " " . $server_user_firstname;?></span>
                   </a>
                   <div class="dropdown-menu dropdown-menu-small">
                     <a class="dropdown-item" href="user-profile-lite.php?profile">
