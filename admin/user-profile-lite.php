@@ -25,7 +25,7 @@ while($row = mysqli_fetch_array($user_admin)){
   $server_user_username = $row['username'];
   $server_user_password = $row['user_password'];
   $server_user_email = $row['user_email'];
-  $picture_name = $row['user_image'];
+  $server_picture_name = $row['user_image'];
   $server_user_ministry = $row['user_ministry'];
   $server_user_position = $row['position'];
   $server_user_address = $row['user_address'];
@@ -42,69 +42,51 @@ if(isset($_POST['update'])){
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
     $email = $_POST['email'];
-
     $password = $_POST['pass'];
+
     $address = $_POST['address'];
     $city = $_POST['city'];
     $state = $_POST['state'];
     $zip = $_POST['zip'];
     $description = $_POST['Description'];
     $phone = $_POST['tel'];
+    
+    $picture_name = $_FILES['filename']['name'];
+    $picture_temp = $_FILES['filename']['tmp_name'];
+    $file_size = $_FILES['filename']['size'];
 
     // for the picture
     $errors = []; 
     $fileExtensions = ['jpeg','jpg','png', ''];
 
-    $picture_name = $_FILES['filename']['name'];
-    $picture_temp = $_FILES['filename']['tmp_name'];
-
-    $file_size = $_FILES['filename']['size'];
 
     $fileExtension = strtolower(end(explode('.',$picture_name)));
 
   //  move_uploaded_file($picture_temp, "img/$picture_name");
 
         $errors = []; // Store all foreseen and unforseen errors here
+          
+        if(empty($password)) {
+          $query = "SELECT * FROM users WHERE user_email = '{$_SESSION['email']}'";
+          $user_admin = mysqli_query($conn, $query);
+
+          while ($row = mysqli_fetch_array($user_admin)){
+            $password = $row['user_password'];
+          }
+        }
+       
 
       if(empty($picture_name)){
+        $query = "SELECT * FROM users WHERE user_email = '{$_SESSION['email']}'";
+        $user_admin = mysqli_query($conn, $query);
 
-         while ($row = mysqli_fetch_array($user_admin)){
-          $picture_name = $row['user_image'];}
-       
-      if(empty($password)){
         while ($row = mysqli_fetch_array($user_admin)){
-          $password = $row['user_password'];}
-      }
-
-        $editmembers = "UPDATE users SET user_firstname = '{$fname}', "; 
-        $editmembers .= "user_lastname = '{$lname}', user_password = '{$password}', ";
-        $editmembers .= "user_email = '{$email}', "; 
-        $editmembers .= "user_address = '{$address}', user_city = '{$city}', ";
-        $editmembers .= "user_state = '{$state}', user_zip = '{$zip}', ";
-        $editmembers .= "user_description = '{$description}', user_tel = {$phone} ";
-        $editmembers .= "WHERE user_email = '{$_SESSION['email']}'";
-
-        result($editmembers);        
-        checkQuery($result);
-
-        echo " <div class='alert alert-success alert-dismissible fade show mb-0' role='alert'>
-        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-          <span aria-hidden='true'>×</span>
-        </button>
-        <i class='fa fa-check mx-2'></i>
-        <strong>Success!</strong> Your profile has been updated! 
-      </div>";
+         $picture_name = $row['user_image'];}
+        }
+      
+      if(empty($errors)==true) {  
         
-      }  
-        elseif(!in_array($fileExtension,$fileExtensions) || $file_size > 2000000){
-        echo  $errors="<div class='alert bg-danger alert-accent alert-dismissible fade show mb-0' role='alert'>
-                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                          <span aria-hidden='true'></span>×</span>
-                        </button>
-                        <i class='fa fa-info mx-2'></i>
-                        Please upload a JPEG or PNG file and less than 2MB </div>";
-      } elseif(empty($errors)==true) {
-        move_uploaded_file($picture_temp,"img/".$picture_name);
+        move_uploaded_file($picture_temp,"img/".$picture_name);    
 
        selectUsers();
        checkQuery($query_search_user);
@@ -126,7 +108,15 @@ if(isset($_POST['update'])){
         <i class='fa fa-check mx-2'></i>
         <strong>Success!</strong> Your profile has been updated! 
       </div>";
-  } else {
+      
+  } elseif(!in_array($fileExtension,$fileExtensions) || $file_size > 2000000){
+        echo  $errors="<div class='alert bg-danger alert-accent alert-dismissible fade show mb-0' role='alert'>
+                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                          <span aria-hidden='true'></span>×</span>
+                        </button>
+                        <i class='fa fa-info mx-2'></i>
+                        Please upload a JPEG or PNG file and less than 2MB </div>";
+      }  else {
            echo "";
         }
     }
@@ -170,7 +160,7 @@ $(function(){
                   <div class="card-header border-bottom text-center">
 
          <div id="im" class="mb-3 mx-auto">
-                    <img class="rounded-circle imgg" src="img/<?php echo $picture_name;?>" alt="User Avatar" width="90" height="90"> </div>
+                    <img class="rounded-circle imgg" src="img/<?php echo $server_picture_name;?>" alt="User Avatar" width="90" height="90"> </div>
                     <h4 class="mb-0"><?php echo $server_user_lastname . " ". $server_user_firstname; ?></h4>
                     <span class="text-muted d-block mb-2"> <?php if(!empty($server_user_position)){
                    echo ucwords($server_user_position) .' '. 'Of The'.' ';
@@ -181,7 +171,7 @@ $(function(){
                   }  ?></span>
                     <a type="file" id="img1"  class="mb-2 btn btn-sm btn-pill btn-outline-primary mr-2" name="filename">
                       <i class="material-icons mr-1">person_add</i>Change Picture</a>
-                    <input type="file" id="my_file" name="filename" >
+                    <input type="file" id="my_file" name="filename" style="display:none;">
 
                   </div>
                   <ul class="list-group list-group-flush">
