@@ -8,7 +8,7 @@ include 'db.php';
    $search_user = "SELECT * FROM users WHERE user_firstname LIKE '$request%' OR user_lastname LIKE '$request%'";
    $query_search_user = mysqli_query($conn, $search_user);
 
-    while($row = mysqli_fetch_assoc($query_search_user)){
+   while($row = mysqli_fetch_assoc($query_search_user)){
     $user_id = $row['user_id'];
     $user_email = $row['user_email'];
     $position = $row['position'];
