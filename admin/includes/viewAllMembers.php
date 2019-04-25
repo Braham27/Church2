@@ -92,27 +92,7 @@ if(isset($_POST['apply'])){
                 </thead>
                   
               <script>
-                // $(document).ready(function(){
-                //   load_data();
-                //   function load_data(request) {
-                //     $.ajax({
-                //       url:"includes/fetch_database.php",
-                //       method:"POST",
-                //       data:{request:request},
-                //       success:function(data){
-                //         $("#data").html(data);
-                //       }
-                //     });
-                //   }
-                //   $('input[name="myInput"]').keyup(function(){
-                //     var search = $(this).val();
-                //     if(search != ''){
-                //       load_data(search);
-                //     } else {
-                //       load_data();
-                //     }
-                //   )};
-   
+              
                    $('input[name="myInput"]').keyup('change', function(){
                      var value = $(this).val();
                      $.ajax({
@@ -124,16 +104,7 @@ if(isset($_POST['apply'])){
                        }
                      })
                    })
-                //  }); 
-
-            //  $(document).ready(function(){
-            //    var request = $('input[name="myInput"]').val();
-            //    $('input[name="myInput"]').keyup(function(){
-            //      $("#data").load("includes/fetch_database.php", {
-            //       request: request
-            //           });<br>
-            //       });
-            //    });
+    
               </script>
 <p ></p>
 <tbody id="data">
@@ -143,12 +114,13 @@ if(isset($_POST['apply'])){
                   } else {
                       $page ='';
                   }
+                  
                   if(!isset($_POST['apply'])){
                   $per_page = 10;
                   }
                
                   if ($page == "" || $page == 1) { // $page == "" means the index;
-                      $page_1 = 1;
+                      $page_1 = 0;
                   } else {
                       $page_1 = ($page * $per_page) - $per_page; //$per_page is the # of data that you need by page; the total should be equal to 0;
                       //or $page_1 = ($page-1) * $per_page
@@ -192,7 +164,7 @@ if(isset($_POST['apply'])){
 
                  echo "<td colspan='2' class='px-0'>";
                     
-                 echo "<a class='mr-3' href=' id='popover' data-toggle='popover' 
+                 echo "<a class='mr-3' href='../profil/index.html?m_id=$user_id' id='popover' data-toggle='popover' 
                       title='See More of $user_first' data-trigger='hover' 
                       data-content=' data-placement='top'>
                       <i class='fas fa-plus-square'></i></a>";
