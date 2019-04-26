@@ -31,11 +31,11 @@ switch ($link) {
     case 'editmember':
         include 'includes/editMember.php';
         break;
-   
-        case 'viewMore':
-        include 'includes/viewMoreMember.php';
+
+    case 'viewMember':
+        include 'includes/profil.php';
         break;
-    
+ 
     default:
         include 'includes/viewAllMembers.php';
         break;
@@ -61,7 +61,7 @@ switch ($link) {
               </li>
             </ul>
             <span class="copyright ml-auto my-auto mr-2">Copyright © 2018
-              <a href="https://designrevision.com" rel="nofollow">DesignRevision</a>
+              <a href="https://designrevision.com" rel="nofollow">Braham</a>
             </span>
           </footer>
         </main>
@@ -77,8 +77,8 @@ switch ($link) {
     <script src="scripts/shards-dashboards.1.1.0.min.js"></script>
     <script src="scripts/script.js"></script>
 
-
-    <script src="scripts/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/smoothbox.jquery2.js"></script>
+    <!-- <script src="scripts/jquery-3.2.1.min.js"></script> -->
     <script src="scripts/main.js"></script>
 	
     
