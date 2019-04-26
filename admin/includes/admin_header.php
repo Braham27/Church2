@@ -54,6 +54,23 @@ if (!isset($_SESSION['position'])) {
 
 
      <!-- <script type="text/javascript" src="cdn.jsdelivr.net/jquery/3.1.0/jquery.min.js"></script> -->
+
+     <!-- single profile -->
+
+     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- js -->
+    <!-- <script src="js/jquery-2.1.3.min.js" type="text/javascript"></script> -->
+    <script type="text/javascript" src="scripts/sliding.form.js"></script>
+    <!-- //js -->
+    <link href="styles/profil.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" 
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="styles/smoothbox.css" type='text/css' media="all" />
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
   </head>
 
   <body class="h-100">
