@@ -164,14 +164,14 @@ if(isset($_POST['apply'])){
 
                  echo "<td colspan='2' class='px-0'>";
                     
-                 echo "<a class='mr-3' href='../profil/index.html?m_id=$user_id' id='popover' data-toggle='popover' 
+                 echo "<a class='mr-3' href='members.php?link=viewMember&m_id=$user_id' id='popover' data-toggle='popover' 
                       title='See More of $user_first' data-trigger='hover' 
-                      data-content=' data-placement='top'>
+                      data-content='' data-placement='top'>
                       <i class='fas fa-plus-square'></i></a>";
-
-                 echo "<a class='mr-2' href=' id='popover' data-toggle='popover' 
+                 
+                 echo "<a class='mr-2' href='' id='popover' data-toggle='popover' 
                       title='Send A Mail to $user_first' data-trigger='hover' 
-                      data-content='Send A Mail' data-placement='top' >
+                      data-content='' data-placement='top' >
                       <i class='fas fa-envelope'></i></a>";             
                       
                  echo "<a class='pl-1 myLink pr-2 py-0'  id='popover' data-trigger='hover' rel='$user_tel' 
