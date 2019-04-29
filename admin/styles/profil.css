@@ -648,3 +648,10 @@ ul.address li ul.address-text li {
     margin-bottom: 8px;
 }
 }
+
+#back img{
+	width: 8% !important;
+	position: fixed;
+	margin-top: .5em;
+	cursor: pointer;
+}
