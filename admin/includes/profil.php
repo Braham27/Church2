@@ -22,6 +22,9 @@ while($row = mysqli_fetch_array($member)){
 	$server_user_tel = $row['user_tel'];
 ?>
 	<div id="content">
+		<div id="back">
+			<img src="img/a1.png" alt="">
+		</div>
 	<div class="profil">
 		<h1 class="h1"><?php echo $server_user_lastname . " " . $server_user_firstname ?></h1>
 		<h1 class="h1">Profile</h1>
