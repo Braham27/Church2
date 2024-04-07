@@ -201,13 +201,13 @@ $(document).ready(function() {
               
                  // Start with a base SQL query
 
-                 $search_user = "SELECT * FROM users WHERE Status = 'Active'";
+                 $search_user = "SELECT * FROM users";
 
                 // Continue with executing $search_user query
 
-                $search_user = "SELECT * FROM users WHERE Status = 'Active' LIMIT $page_1, $per_page";
+                $search_user = "SELECT * FROM users LIMIT $page_1, $per_page";
                 $query_search_user = mysqli_query($conn, $search_user);
-                $count_query = mysqli_query($conn, "SELECT COUNT(user_id) FROM users WHERE Status = 'Active'");
+                $count_query = mysqli_query($conn, "SELECT COUNT(user_id) FROM users");
                 $count_row = mysqli_fetch_array($count_query);
                 $total_records = $count_row[0];
                 $no_of_page = ceil($total_records / $per_page);
@@ -274,19 +274,20 @@ $(document).ready(function() {
                       data-content=' data-placement='top'>
                       <i class='fas fa-edit'></i></a>";                                
 
-                      echo "<form id='form-{$member_id}' style='display:none;' action='includes/toggle_status.php' method='post'>
-                              <input type='hidden' name='user_id' value='{$member_id}'>
-                              <input type='hidden' name='action' value='" . ($status == 'Active' ? "deactivate" : "activate") . "'>
-                              <input type='hidden' name='csrf_token' value='{$csrfToken}'>
-                            </form>";
+                        // Invisible form for CSRF token submission
+                echo "<form id='form-{$member_id}' style='display:none;' action='includes/toggle_status.php' method='post'>
+                    <input type='hidden' name='user_id' value='{$member_id}'>
+                    <input type='hidden' name='action' value='" . ($status == 'Active' ? "deactivate" : "activate") . "'>
+                    <input type='hidden' name='csrf_token' value='{$csrfToken}'>
+                    </form>";
 
-                      // Toggle link
-                      echo "<a class='mr-2 toggle-status' href='#' id='popover' data-toggle='popover' rel='{$member_id}' 
-                            title='" . ($status == 'Active' ? "Inactivate" : "Activate") . " {$user_first}' data-trigger='hover' 
-                            data-content='" . ($status == 'Active' ? "Inactivate" : "Activate") . " {$user_first}' data-placement='top' data-toggle='modal' data-target='.status'
-                            onclick='event.preventDefault(); if(confirm(\"Are you sure you want to " . ($status == 'Active' ? "Inactivate" : "Activate") . " {$user_last} {$user_first}?\")) document.getElementById(\"form-{$member_id}\").submit();'>
-                            <i class='fa " . ($status == 'Active' ? "fa-toggle-on" : "fa-toggle-off") . "' aria-hidden='true'></i>
-                          </a>";
+                // Toggle link
+                echo "<a class='mr-2 toggle-status' href='#' id='popover' data-toggle='popover' rel='{$member_id}' 
+                    title='" . ($status == 'Active' ? "Inactivate" : "Activate") . " {$user_first}' data-trigger='hover' 
+                    data-content='" . ($status == 'Active' ? "Inactivate" : "Activate") . " {$user_first}' data-placement='top'  
+                    onclick='event.preventDefault(); if(confirm(\"Are you sure you want to " . ($status == 'Active' ? "Inactivate" : "Activate") . " {$user_last} {$user_first}?\")) document.getElementById(\"form-{$member_id}\").submit();'>
+                    <i class='fa " . ($status == 'Active' ? "fa-toggle-on" : "fa-toggle-off") . "' aria-hidden='true'></i>
+                    </a>";
                       echo "</td>";
                       echo "</tr>";
                   }
