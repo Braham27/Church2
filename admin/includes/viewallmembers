@@ -6,6 +6,8 @@ include_once 'handle_action.php';
 include_once 'function.php';
 $csrfToken = $_SESSION['csrf_token'];
 
+//Test
+
 // Number of rows per page 
 
 if(isset($_POST['apply'])){
