@@ -33,6 +33,8 @@ if (!isset($_SESSION['position'])) {
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.6/quill.snow.css"> 
     <script src="scripts/jquery-3.2.1.min.js"></script>
+    <script src="scripts/viewAllMembers.js"></script>
+
 
 
     <!-- sms -->
