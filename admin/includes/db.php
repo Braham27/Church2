@@ -4,11 +4,34 @@ $db['db_user'] = "root";
 $db['db_pass'] = "";
 $db['db_name'] = "north_shore";
 
-foreach ($db as $key => $value) {
-    define(strtoupper($key), $value);
-}
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "north_shore"; // Change this to your desired database name
 
-$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+// Create connection
+$conn = new mysqli($servername, $username, $password);
+
+// Create database if it doesn't exist
+// $sql = "CREATE DATABASE IF NOT EXISTS `$dbname`";
+// if ($conn->query($sql) === TRUE) {
+//     echo "Database `$dbname` exists or was created successfully.\n";
+// } else {
+//     echo "Error creating database: " . $conn->error . "\n";
+// }
+
+// Close the initial connection
+$conn->close();
+
+// Connect to the new database
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// // Check connection
+// if ($conn->connect_error) {
+//     die("Connection failed: " . $conn->connect_error);
+// }
+
+
 
 // Function to check if table exists
 function tableExists($conn, $tableName) {
@@ -21,7 +44,7 @@ function tableExists($conn, $tableName) {
 if (!tableExists($conn, 'users')) {
     // SQL to create users table
     $sql = "CREATE TABLE users (
-        user_id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        user_id INT(11) AUTO_INCREMENT PRIMARY KEY,
         username VARCHAR(250) COLLATE latin1_swedish_ci NOT NULL,
         user_firstname VARCHAR(250) COLLATE latin1_swedish_ci,
         user_lastname VARCHAR(250) COLLATE latin1_swedish_ci,
@@ -39,12 +62,11 @@ if (!tableExists($conn, 'users')) {
         Status VARCHAR(10) COLLATE latin1_swedish_ci
     )";
     
-    if ($conn->query($sql) === TRUE) {
-        echo "Table users created successfully";
-    } else {
-        echo "Error creating table: " . $conn->error;
-    }
-    $conn->close();
+    // if ($conn->query($sql) === TRUE) {
+    //     // echo "Table users created successfully";
+    // } else {
+    //     echo "Error creating table: " . $conn->error;
+    // }
 }
 
 // Create payment table if not exists
@@ -71,8 +93,6 @@ if (!tableExists($conn, 'payment')) {
         echo "Error creating table payment: " . $conn->error . "\n";
     }
 }
-
-$conn->close();
 
 ?>
 
