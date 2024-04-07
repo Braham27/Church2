@@ -123,6 +123,7 @@ if(isset($_POST['signin'])){
 		$_SESSION['zip'] = $server_user_zip;
 		$_SESSION['desc'] = $server_user_description;
 		$_SESSION['tel'] = $server_user_tel;
+		$_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 
 	} elseif ($password !== $user_password || $email !== $user_email) {
 		echo "<br>"."<p style='color:white;text-align:center'>Wrong Password Or Email..</p>";
