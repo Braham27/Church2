@@ -21,6 +21,9 @@ if ($active && !$inactive) {
     $whereConditions[] = "Status = 'Active'";
 } elseif (!$active && $inactive) {
     $whereConditions[] = "Status = 'Inactive'";
+} elseif ($active && $inactive) {
+    // Both are checked; No specific condition for status needed as we are fetching both
+    // $whereConditions[] = "(Status = 'Active' OR Status = 'Inactive')";
 }
 
 // Search term condition
@@ -75,7 +78,44 @@ if (!$result) {
                             <td>" . htmlspecialchars($row['user_email']) . "</td>
                             <td>" . htmlspecialchars($row['position']) . " / " . htmlspecialchars($row['user_ministry']) . "</td>
                             <td>
-                                <!-- Action buttons go here -->
+                            <td colspan='2' class='px-0'>
+                    
+                            <a class='mr-3' href='members.php?link=viewMember&m_id=$member_id' id='popover' data-toggle='popover' 
+                                 title='See More of $user_first' data-trigger='hover' 
+                                 data-content='' data-placement='top'>
+                                 <i class='fas fa-plus-square'></i></a>
+                            
+                            <a class='pl-1 myLink pr-2 py-0'  id='popover' data-trigger='hover' rel='$user_email' 
+                            data-content='$user_first' value='$user_last $user_first' data-toggle='modal' data-target='.email'
+                            title='Send A sms to $user_first' href='javascript:void(0)' data-toggle='popover' data-placement='top'>
+                                 <i class='fas fa-envelope'></i></a>             
+                                 
+                            <a class='pl-1 myLink pr-2 py-0'  id='popover' data-trigger='hover' rel='$user_tel' 
+                                 data-content='$user_first' value='$user_last $user_first' data-toggle='modal' data-target='.sms'
+                                 title='Send A sms to $user_first' href='javascript:void(0)' data-toggle='popover' data-placement='top'>
+                                   <i class='fas fa-sms'></i>
+                                 </a>
+                                 
+                            <a class='mr-2 pb-1' href='members.php?link=editmember&m_id=$member_id;' id='popover' data-toggle='popover' 
+                                 title='Edit' data-trigger='hover' 
+                                 data-content=' data-placement='top'>
+                                 <i class='fas fa-edit'></i></a>                                
+           
+                                   // Invisible form for CSRF token submission
+                           <form id='form-{$member_id}' style='display:none;' action='includes/toggle_status.php' method='post'>
+                               <input type='hidden' name='user_id' value='{$member_id}'>
+                               <input type='hidden' name='action' value='" . ($status == 'Active' ? "deactivate" : "activate") . "'>
+                               <input type='hidden' name='csrf_token' value='{$csrfToken}'>
+                               </form>
+           
+                           // Toggle link
+                           <a class='mr-2 toggle-status' href='#' id='popover' data-toggle='popover' rel='{$member_id}' 
+                               title='" . ($status == 'Active' ? "Inactivate" : "Activate") . " {$user_first}' data-trigger='hover' 
+                               data-content='" . ($status == 'Active' ? "Inactivate" : "Activate") . " {$user_first}' data-placement='top'  
+                               onclick='event.preventDefault(); if(confirm(\"Are you sure you want to " . ($status == 'Active' ? "Inactivate" : "Activate") . " {$user_last} {$user_first}?\")) document.getElementById(\"form-{$member_id}\").submit();'>
+                               <i class='fa " . ($status == 'Active' ? "fa-toggle-on" : "fa-toggle-off") . "' aria-hidden='true'></i>
+                               </a>
+                                 </td>
                             </td>
                         </tr>";
         }
