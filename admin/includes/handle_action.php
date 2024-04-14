@@ -1,16 +1,17 @@
 <?php
 // Assuming you have already established a connection to your database and it's stored in $conn
+$csrfToken = $_SESSION['csrf_token'];
 
 // Capture the user inputs
 $searchTerm = trim($_GET['request'] ?? ''); // The search term input by the user, trimmed to remove leading/trailing spaces
 $active = isset($_GET['active']) && $_GET['active'] === 'Active'; // Checks if the 'Active' checkbox is selected
 $inactive = isset($_GET['inactive']) && $_GET['inactive'] === 'Inactive'; // Checks if the 'Inactive' checkbox is selected
 
-// Validate checkbox selection
-if (!$active && !$inactive) {
-    echo "Please select if the member is active or inactive.";
-    return; // Stop the script execution if no status is selected
-}
+// // Validate checkbox selection
+// if (!$active && !$inactive) {
+//     echo "Please select if the member is active or inactive.";
+//     return; // Stop the script execution if no status is selected
+// }
 
 // Start constructing the SQL query
 $searchSql = "SELECT * FROM users";
@@ -71,6 +72,12 @@ if (!$result) {
     if (mysqli_num_rows($result) > 0) {
         $counter = 1; // Initialize a counter for numbering the rows
         while ($row = mysqli_fetch_assoc($result)) {
+            $user_first = htmlspecialchars($row['user_firstname']);
+            $user_last = htmlspecialchars($row['user_lastname']);
+            $member_id = htmlspecialchars($row['user_id']);
+            $user_email = htmlspecialchars($row['user_email']);
+            $user_tel = htmlspecialchars($row['user_tel']);
+            $status = htmlspecialchars($row['Status']);
             $output .= "<tr>
                             <td>" . htmlspecialchars($counter++) . "</td>
                             <td>" . htmlspecialchars($row['user_lastname']) . "</td>
@@ -102,7 +109,7 @@ if (!$result) {
                                  <i class='fas fa-edit'></i></a>                                
            
                                    // Invisible form for CSRF token submission
-                           <form id='form-{$member_id}' style='display:none;' action='includes/toggle_status.php' method='post'>
+                               <form id='form-{$member_id}' style='display:none;' action='includes/toggle_status.php' method='post'>
                                <input type='hidden' name='user_id' value='{$member_id}'>
                                <input type='hidden' name='action' value='" . ($status == 'Active' ? "deactivate" : "activate") . "'>
                                <input type='hidden' name='csrf_token' value='{$csrfToken}'>
@@ -133,5 +140,4 @@ if (!$result) {
 // } else {
 //     echo "Please provide a search term or select a status filter.";
 // }
-?>
 ?>

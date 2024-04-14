@@ -8,6 +8,11 @@ if(isset($_SESSION['position'])){
 if (!isset($_SESSION['position'])) {
   header("location: ../index.php");
 }
+
+if (!isset($_SESSION['csrf_token'])) {
+  $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+  $csrfToken = $_SESSION['csrf_token'];
+}
 ?>
 <!doctype html>
 <html class="no-js h-100" lang="en">

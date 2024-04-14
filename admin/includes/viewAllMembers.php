@@ -7,7 +7,6 @@ include_once 'function.php';
 $csrfToken = $_SESSION['csrf_token'];
 
 // Number of rows per page 
-
 if(isset($_POST['apply'])){
   if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
     // Handle the error: the token is missing or doesn't match

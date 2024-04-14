@@ -1,0 +1,15 @@
+{
+    "name": "phpoffice/phpspreadsheet",
+    "autoload": {
+        "psr-4": {
+            "Phpoffice\\Phpspreadsheet\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Braham27",
+            "email": "abrahamcadet10@gmail.com"
+        }
+    ],
+    "require": {}
+}
