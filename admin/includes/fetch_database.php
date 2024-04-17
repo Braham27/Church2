@@ -1,6 +1,6 @@
 <?php
-include 'db.php'; // Make sure this path is correct
-include("function.php");
+include_once 'db.php'; // Make sure this path is correct
+include_once("function.php");
 
 // Initialize variables to hold the conditions for filtering and the base SQL query
 $whereParts = [];
@@ -112,6 +112,6 @@ if ($result && mysqli_num_rows($result) > 0) {
 echo "</tbody>";
 mysqli_close($conn);
 ?>
-?>
+
 
 

@@ -1,17 +1,17 @@
-<?php include 'includes/admin_header.php'; ?>
+<?php include_once 'includes/admin_header.php'; ?>
 
     <div class="container-fluid">
       <div class="row">
     
 <!-- Main Sidebar -->
-<?php include 'includes/admin_sidebar.php'; ?>
+<?php include_once 'includes/admin_sidebar.php'; ?>
 <!-- End Main Sidebar -->
 
         <main class="main-content col-lg-10 col-md-9 col-sm-12 p-0 offset-lg-2 offset-md-3">
           <div class="main-navbar sticky-top bg-white">
 
 <!-- Main Navbar -->
-<?php include 'includes/admin_nav.php'; ?>
+<?php include_once 'includes/admin_nav.php'; ?>
 <!-- / .main-navbar -->
 
           </div>

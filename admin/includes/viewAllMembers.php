@@ -4,6 +4,7 @@
 include_once 'excel.php';
 include_once 'handle_action.php';
 include_once 'function.php';
+include_once 'modal.php';
 $csrfToken = $_SESSION['csrf_token'];
 
 // Number of rows per page 
@@ -134,19 +135,17 @@ $(document).ready(function() {
                     <div class="container-fluid">
                         <div class="row justify-content-between ml-1">
                             <div class="col-lg-3 justify-content-between">
-                                <form method="post" id="userActionForm" class="form-inline mt-3">
-                                    <input type="hidden" name="csrf_token"
-                                        value="<?php echo $_SESSION['csrf_token']; ?>">
-                                    <label for="actions" class="my-1 mr-2">Action:</label>
-                                    <select class="custom-select my-1 mr-sm-2 col-lg-5" name="actions" id="actions">
-                                        <option value="activate">Activate</option>
-                                        <option value="inactivate">Inactivate</option>
-                                        <option value="send_emails">Send Email</option>
-                                        <option value="send_message">Send Message</option>
-                                    </select>
-                                    <button type="button" id="applyActionBtn"
-                                        class="btn btn-primary my-1">Apply</button>
-                                </form>
+                            <form method="post" id="userActionForm" class="form-inline mt-3">
+                                <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
+                                <label for="actions" class="my-1 mr-2">Action:</label>
+                                <select class="custom-select my-1 mr-sm-2 col-lg-5" name="actions" id="actions">
+                                    <option value="activate">Activate</option>
+                                    <option value="inactivate">Inactivate</option>
+                                    <option value="send_emails">Send Email</option>
+                                    <option value="send_message">Send Message</option>
+                                </select>
+                                <button type="button" id="applyActionBtn" class="btn btn-primary my-1">Apply</button>
+                            </form>
                             </div>
                             <div class="col-lg-3 text-center mt-2 mr-3">
                                 <div class="form-check form-check-inline mt-3">
@@ -213,9 +212,6 @@ $(document).ready(function() {
 
                 // Calculate the starting number for the current page
                 $startNumber = ($page - 1) * $per_page + 1;
-
-                //   $search_user = "SELECT * FROM users WHERE Status = 'Active' LIMIT $page_1, $per_page";
-                //   $query_search_user = mysqli_query($conn, $search_user);
                   
                 //  for($x = 1; $x <= $no_of_page; $x++){
                    
