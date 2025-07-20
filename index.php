@@ -1,4 +1,4 @@
-<?php include 'admin/includes/db.php' ?>
+<!-- <?php include 'admin/includes/db.php' ?>
 
 <!DOCTYPE html>
 <html>
@@ -138,4 +138,4 @@ if(isset($_POST['signin'])){
 <!-- //main -->
 
 </body>
-</html>
+</html> -->
